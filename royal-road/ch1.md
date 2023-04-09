@@ -67,3 +67,31 @@ See `descargues.blend`.
 
 ![](img/ch1-descargues.jpg)
 
+# Duality
+
+$$ ℙ², \qquad ℝ[X, Y, Z] $$
+
+* $P$ - statement about lines and points
+* $P'$ - `s/line/point` and `s/point/line`
+
+### Example
+
+* $P$ : through points $Q₁$ and $Q₂$ there is a unique line $ℓ$.
+* $P'$ : through lines $q₁$ and $q₂$ there is a unique point $L$.
+
+Let $A$ be a point such that
+$$ A = [A₀ : A₁ : A₂] $$
+then the statement is equivalent to
+$$ α₀A₀ + α₁A₁ + α₂A₂ = 0 $$
+$$ f = α₀X + α₁Y + α₂Z $$
+$$ f(A) = 0 $$
+$$ f = [α₀ : α₁ : α₂] $$
+Now observe a startling result.
+$$ g = A₀X + A₁Y + A₂Z $$
+$$ B = [α₀ : α₁ : α₂] $$
+\begin{align*}
+g(B) &= A₀α₀ + A₁α₁ + A₂α₂ \\
+     &= 0
+\end{align*}
+In other words, the dot product is symmetric due to the ring's commutativity.
+
