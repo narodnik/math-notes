@@ -164,3 +164,47 @@ Also $α$ has an inverse $α⁻¹(x, y) = (x/μ², y/μ³)$.
 
 And then composing them clearly gives the identity.
 
+# Tower of Field Extensions
+
+$$ A'/A = μ⁴ $$
+consider $g(x) = A'/A - x⁴$, a root of $g(x)$ is our desired $μ$.
+
+Curves sharing same j-invariant are isomorphic over some finite extension of $K$.
+This field extension is of degree 2, 4, or 6 when char $≠ 2, 3$.
+
+Recall $E \cong E'$ then exists $μ ∈ K^×$ with $A' = μ⁴A, B' = μ⁶B$
+\begin{align*}
+j(E') &= 1728 \frac{4(μ⁴A)³}{4(μ⁴A)³ + 27(μ⁶B)²} \\
+      &= 1728 \frac{4A³}{4A³ + 27B²} = j(E)
+\end{align*}
+Conversely, suppose $j(E) = j(E') = j₀$.
+
+If $j₀ = 0$ then $A = A' = 0$ and $B, B' ≠ 0$, we want $μ ∈ \bar{K}$ such that $B' = μ⁶B$.
+Such $μ$ is a root of the polynomial $x⁶ - B'/B$.
+
+Likewise $j₀ = 1728$, then $B = B' = 0$ and $A, A' ≠ 0$ so $A' = μ⁴B$ which is the root of $x⁴ - A'/A$.
+
+For the remaining case $A, A', B, B' ≠ 0$, then let
+$$ A'' = 3j₀(1728 - j₀) $$
+$$ B'' = 2j₀(1728 - j₀)² $$
+so that $j(A'', B'') = j₀$.
+
+Now take
+$$ j(E) = 1728 \frac{4A³}{4A³ + 27B²} = j₀ $$
+\begin{align*}
+A'' &= 3 \cdot 1728 \frac{4A³}{4A³ + 27B²} (1728 - 1728 \frac{4A³}{4A³ + 27B²}) \\
+    &= \left(\frac{2⁷3⁵AB}{4A³ + 27B²}\right)² \cdot A
+\end{align*}
+$$ B'' = … = \left(\frac{2⁷3⁵ AB}{4A³ + 27B²}\right)³ \cdot B $$
+(these terms are the $u$ below)
+
+Analogously we can plug in
+$$ j₀ = 1728 \frac{4{A'}³}{4{A'}³ + 27{B'}²} $$
+into $A''$ and $B''$ and get expressions for $A''$ and $B''$ in terms of $A'$ and $B'$.
+
+Now if we let
+$$ u = \left(\frac{2⁷3⁵AB}{4A³ + 27B²}\right)² \cdot \left(\frac{4{A'}³ + 27B'}{2⁷3⁵A'B'}\right)  $$
+then $A' = u²A$, $B' = u³B$ so we choose $μ ∈ K^×$ such that $μ² = u$ so
+$$ A' = μ⁴A, B' = μ⁶B $$
+and $μ$ exists in an extension of degree at most 2.
+
