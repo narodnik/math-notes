@@ -424,13 +424,13 @@ c & d \\
 $\{ (1, 0), (0, 1)\} ∈ ℤ_n × ℤ_n$)
 
 Any $2x2$ satisfies
-$$ A² - \textrm{tr}(A · A) + \det(A·I) = 0 $$
+$$ A² - \textrm{tr}(A) A + \det(A) I = 0 $$
 where $\textrm{tr}(A) = a + d$.
 
 We showed that
 $$\det(A_n) = \deg(\Phi_n) \mod n $$
 and another direct calc shows
-$$ \textrm{tr}(A_n) = 1 + \det(A_n) = \det(I - A_n) $$
+$$ \textrm{tr}(A_n) = 1 + \det(A_n) - \det(I - A_n) $$
 thus
 \begin{align*}
 \textrm{tr}(A_n) &= 1 + \deg \Phi_q + \deg(\textrm{id} - \Phi_q) \\
