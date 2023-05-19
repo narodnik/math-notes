@@ -71,3 +71,45 @@ with $G₂' ⊆ E'(𝔽_{q²})$.
 there exists an explicit formula for the twist
 $$ φ_m : E'(𝔽_{q²}) → E(𝔽_{qᵏ}) $$
 
+# BLS12-381
+
+This is a parameterized family of pairing-friendly curves.
+
+$$ r(X) = X⁴ - X² + 1 $$
+$$ t(X) = X + 1 $$
+$$ q(X) = \frac{(X - 1)²}{3} (X⁴ - X² + 1) + X $$
+with $E: y² = x³ + 4$ with the parameter $X$.
+Embedding degree is always $k = 12$.
+
+There is a known value $X$ that gives the largest $r(X)$.
+Which gives us $q = 381$ bits.
+
+Note: $j(E) = 0 \left(= \frac{4A³}{4A³ + 27B²} 1728 \right)$ but $A = 0$.
+
+So there is a sextic twist of $E$.
+
+Thus $𝔾₁ = E(𝔽_q)[r]$ and
+$$ 𝔾₂ = \textrm{ker}(Φ - [q]) ∩ E[r] $$
+and $𝔾₂$ can be represented by $𝔾₂' ⊆ E(𝔽_{q²})$ via an isomorphism
+$$ φ_m: 𝔾₂' → 𝔾₂ $$
+$$ E(𝔽_{q²}) → E(𝔽_{q¹²}) $$
+Thus there exists a degree 6 twist $φ₆$ of $E$ over $𝔽_{q²}$.
+
+And hence a more efficient modified pairing:
+$$ \bar{e} : 𝔾₁ × 𝔾₂' → 𝔾_T = μ_r $$
+$$ \bar{e}(P, Q') = e(P, φ₆Q') $$
+
+# How to represent $𝔽_{q²}$?
+
+**Lemma:** let $q$ be a prime, then the polynomial
+$g(x) = x² + 1$ is irreducible iff $q ≠ 1 \mod{4}$.
+
+Otherwise let $α$ be a root of $g$. Then $α² = -1$, so $α⁴ = 1$ and
+so $4 | |𝔽_q^×| ⇔ 4 | (q - 1) ⇔ q ≡ 1 \mod{4}$.
+
+In BLS for the ideal $X$, $q ≡ \mod{4}$.
+$$ 𝔽_{q²} = 𝔽_q[x] / ⟨x² + 1⟩ $$
+
+with this representation
+$$ E' : y² = x³ + 4(i + 1) $$
+
