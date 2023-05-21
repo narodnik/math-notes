@@ -1,0 +1,53 @@
+* α(P) has a canonical form (r₁(x), yr₂(x))
+* α is separable ⇒ #ker(α) = deg(α)
+    * Separability here refers to 'multiplicity' of values in the map.
+    * We can see the map is separable if derivative is nonzero
+* Define α = Φⁿ - id, then #ker(α) = #E(𝔽_qⁿ)
+* Restriction of α to E[n] stays in E[n] by endomorphism rules
+    * Remember E[n] ≌ ℤ_n × ℤ_n
+    * So we can use 2x2 matrices to represent the transforms based off how the basis is transformed.
+* Weil pairing is invariant under Galois action by homomorphic property.
+    * σ(e(P, Q)) = e(σ(P), σ(Q))
+    * This shows det(α) = deg(α) mod n  [prop 5.129]
+* Combine the last two results.
+    * From linalg det(aα + bβ) = a²det(α) + b²det(β) + ab(det(α + β) - det(α) - det(β))
+    * Replace determinant by degree mod n
+    * deg(Φ) = q, deg(-1) = 1 ⇒ deg(rΦ + s) = r²q + s² - rst where t = q + 1 - deg(Φ - 1)
+* Hasse-Weil |q + 1 - #E(𝔽_q)| ≤ 2√q
+    * Rearrange previous polynomial to get p(x) = qx² - tx + 1 where x₀ = r/s and p(x₀) ≥ 0
+    * By an analytic argument t² - 4q ≤ 0
+* Corollary: α = Φ² - [t] Φ + [q] = ∞
+    * All 2x2 matrices satisfy A² - tr(A)A + det(A)I = 0
+    * Recall det(A) = deg(Φ) mod n
+    * With magic we see tr(A) = t mod n
+    * For any n prime to p, then α(P) = ∞, ∀P ∈ ∪ E[n], so ker(α) is infinite
+    * But earlier we showed #ker(α) = deg(α) for separable maps, and #ker(α) ≤ deg(α) otherwise.
+* Φ² - [t]Φ + [q] = ∞ ⇒ (Φ - [1])(Φ - [q]) ≡ ∞ mod r for nice r : r | #E(𝔽_q)
+* Eig_ℓ(Φ) = { P ∈ E(K̅) : Φ(P) = ℓP }, denote H₁ = Eig₁(Φ)∩E[r], H_q = Eig_q(Φ)∩E[r]
+    * We can see H₁ and H_q are subgroups of E[r]. [corr 6.7]
+    * α = (Φ - [1])(Φ - [q]) ≡ ∞ mod r  [lemma 6.6]
+    * E[r] ≌ H₁ × H_q = (E(𝔽_q)[r] x Eig_q(Φ)) ∩ E[r]
+* Tr : E(𝔽_qᵏ) → E(𝔽_q) by Tr(P) = P + Φ(P) + ⋯ + Φᵏ⁻¹(P)
+    * Φ(Tr(P)) = Φ(P) + Φ²(P) + ⋯ + P ⇒ Φ(Tr(P)) = Tr(P) ⇒ Im(Tr) ⊆ E(𝔽_q)
+* Eig_k(Tr) = E(𝔽_q)[r]
+    * Indeed for any R ∈ E(𝔽_q) then Φ(R) = R and Tr(R) = kR
+    * Likewise let R ∈ E[r] with Tr(R) = kR. We see Φ(Tr(R)) = kR (using prev result),
+      so k(Φ(R) - R) = 0. But gcd(k, r) = 1 so Φ(R) = R ⇒ R ∈ E(𝔽_q).
+    * So we conclude the k-eigenspace of Tr is E(𝔽_q)[r]
+* H₁ = E(𝔽_q)[r]
+* H_q = { R ∈ E[r] : Tr(R) = ∞ }    [prop 6.11]
+    * Let R ∈ E[r] : Tr(R) = ∞, then since E[r] ≌ H₁ × H_q, we get R = aP + bQ where P ∈ H₁, Q ∈ H_q
+    * Φ(R) = aP + bqQ since Φ(P) = P and Φ(Q) = qQ (by the definition of eigenspaces)
+    * Tr(R) = kaP + (1 + q + ⋯ + qᵏ⁻¹)bQ = kaP + ((qᵏ - 1)/(q - 1))bQ = ∞
+    * Both P, Q are in different subgroups so kaP = ∞, but P ∈ E[r] so ka ≡ 0 mod r.
+    * Since gcd(k, r) = 1, a ≡ 0 mod r, and R = aP + bQ ⇒ R = bQ ∈ H_q
+    * Conversely, let R ∈ H_q, then as before Tr(R) = ((qᵏ - 1)/(q - 1))R. Since r|qᵏ - 1 but r∤q - 1
+      then Tr(R) = ∞ (note we picked r to have these properties)
+* Balasubramanian & Koblitz says E[r] ⊆ E(𝔽_qᵏ). Let R ∈ E[r], R = aP + bQ, then Tr(R) = ∞ by above
+    * Φᵏ(Q) = qᵏQ but r|qᵏ - 1 ⇒ (qᵏ - 1)Q = ∞ so Φᵏ(Q) = Q
+    * Trivially Φ(P) = P ⇒ Φᵏ(P) = P
+    * Φᵏ(aP + bQ) = aP + bQ fixes E[r] which gives us the theorem.
+* Definition of pairing friendly curve:
+    * We want a relevant large prime r
+    * We also want k to be small
+
