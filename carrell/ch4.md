@@ -43,3 +43,14 @@ Likewise applying the same logic to $QN⁻¹ = M⁻¹P$, we see $r ≤ s$.
 
 Therefore $r = s ⇒ P = Q$.
 
+# Exercises
+
+## Ex 4.3.16
+
+Matrix is symmetric so by eliminating mirror entries, we end up with $U = L^T$.
+
+$LPDU = (LPDU)^T = U^T D^T P^T L^T = LD^T P^T U ⇒ D^T P^T = PD ⇒ P = P^T$ by $MP = NQ$.
+But $P(n) ⊆ O(n) ⇒ P^T = P⁻¹$ so $P = P⁻¹ ⇒ D^T P = PD$ but $D^T = D$ so $DP = PD$.
+
+Likewise $DP = D^T P = D^T P^T = PD = (PD)^T$ so is symmetric and $L = U^T$ preserves symmetry.
+
