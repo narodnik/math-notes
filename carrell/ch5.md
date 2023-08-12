@@ -152,3 +152,15 @@ So $AB$ is also singular, and hence $\det(A)\det(B) = 0 ⇒ \det(AB) = 0$.
 
 Use product formula
 
+# Laplace Expansion
+
+$$ \det(A) = \sum_{i = 1}^n (-1)ⁱ⁺ʲ a_{ij} \det(A_{ij}) $$
+This is the laplace expansion along the $j$th column. Because $\det(A) = \det(A^T)$, we can also do the same expansion along the $i$th row instead.
+
+Assume $j = 1$ then
+\begin{align*}
+\det(A) &= \sum_{σ ∈ S(n)} \sgn(σ) a_{σ(1)1} a_{σ(2)2} ⋯  a_{σ(n)n} \\
+        &= a₁₁ \sum_{σ(1) = 1} \sgn(σ) a_{σ(2)2} ⋯ a_{σ(n)n} + ⋯ 
+            + a_{n1} \sum_{σ(1) = n} \sgn(σ) a_{σ(2)2} ⋯ a_{σ(n)n}
+\end{align*}
+
