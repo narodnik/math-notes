@@ -67,7 +67,19 @@ A = matrix(K, [
 x = vector(K, [1, 0, 0, 0, 0, 0, 0, 0, 0])
 print(A*x)
 
-# if we can toggle one then any configuration is possible
-# and hence the matrix can be inverted.
-# but it cannot be inverted, so toggling 1 is impossible
+
+# Construct adjoined matrix
+A = matrix(K, [
+    [ 1, 1, 1, 1, 0, 0, 1, 0, 0, 1],
+    [ 1, 1, 1, 0, 1, 0, 0, 1, 0, 0],
+    [ 1, 1, 1, 0, 0, 1, 0, 0, 1, 0],
+    [ 1, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+    [ 0, 1, 0, 1, 1, 1, 0, 1, 0, 0],
+    [ 0, 0, 1, 1, 1, 1, 0, 0, 1, 0],
+    [ 1, 0, 0, 1, 0, 0, 1, 1, 1, 0],
+    [ 0, 1, 0, 0, 1, 0, 1, 1, 1, 0],
+    [ 0, 0, 1, 0, 0, 1, 1, 1, 1, 0],
+])
+print(A.rref())
+# Row 6 now says 1 = 0 which is impossible so there is no solution
 
