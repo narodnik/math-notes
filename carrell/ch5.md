@@ -164,3 +164,17 @@ Assume $j = 1$ then
             + a_{n1} \sum_{σ(1) = n} \sgn(σ) a_{σ(2)2} ⋯ a_{σ(n)n}
 \end{align*}
 
+Now we have $σ ∈ S(n)$ where $σ(1) = r$. Take $P_σ ∈ 𝔽^{n×n}$ and delete column 1 and row $r$. Note that since every row and column contains a single 1, the new $P_σ' ∈ 𝔽^{(n-1)×(n-1)}$ is also a valid permutation. So $P_σ' = P_{σ'}$ for some $σ ∈ S(n - 1)$.
+
+Let $P_{σ'}$ take $t$ row swaps to become the identity $I_{n-1}$. Then $\sgn(σ') = \det(P_{σ'}) = (-1)ᵗ$.
+
+Adding back row $r$, and noting $σ(r) = 1$, we see that we require $r - 1$ row swaps to bring it to the first row. That means we need $t + r - 1$ row swaps to bring $P_σ$ to the identity $I_n$. So $\sgn(σ) = (-1)ʳ⁻¹\sgn(σ')$
+
+\begin{align*}
+\sum_{σ(1) = r} \sgn(σ) a_{σ(2)2} ⋯ a_{σ(n)n}
+    &= \sum_{σ' ∈ S(n-1)} (-1)ʳ⁻¹ \sgn(σ') a_{σ(2)2} ⋯ a_{σ(n)n} \\
+    &= (-1)ʳ⁻¹ \det(A_{r1}) \\
+    &= (-1)ʳ⁺¹ \det(A_{r1})
+\end{align*}
+where the last line we note $(-1)⁻ʲ = (-1)⁺ʲ$.
+
