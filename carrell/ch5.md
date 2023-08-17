@@ -1,9 +1,11 @@
 ---
 header-includes: |
+    - \usepackage{mathabx}
     - \newcommand{\row}[1]{\textrm{row}({#1})}
     - \let\vec\mathbf
     - \DeclareMathOperator\sgn{sgn}
     - \DeclareMathOperator\rank{rank}
+    - \DeclareMathOperator\adj{adj}
 ---
 
 # Main Theorem
@@ -11,7 +13,7 @@ header-includes: |
 $$ \det : K^{n×n} → K $$
 
 1. $\det(AB) = \det(A)\det(B)$
-2. If $A = (a_{ij}) is upper or lower triangular then $\det(A) = \prod_{i = 1}^n a_{ii}$.
+2. If $A = (a_{ij})$ is upper or lower triangular then $\det(A) = \prod_{i = 1}^n a_{ii}$.
 3. If $E$ is a row swap matrix then $\det(E) = -1$.
 4. $A$ is nonsingular iff $\det(A) ≠ 0$.
 
@@ -177,4 +179,45 @@ Adding back row $r$, and noting $σ(r) = 1$, we see that we require $r - 1$ row 
     &= (-1)ʳ⁺¹ \det(A_{r1})
 \end{align*}
 where the last line we note $(-1)⁻ʲ = (-1)⁺ʲ$.
+
+# Cramer's Rule (3x3 Case)
+
+Let $M(A) ∈ 𝔽^{n×n}$ be the matrix whose $ij$-entry is $(-1)ⁱ⁺ʲ \det(A_{ij})$.
+The **adjoint** matrix of $A$ is $\adj(A) = M(A)^T$.
+
+$$ \adj(A) = \begin{pmatrix}
+\det(A_{11}) & -\det(A_{21}) & \det(A_{31}) \\
+-\det(A_{12}) & \det(A_{22}) & -\det(A_{32}) \\
+\det(A_{13}) & -\det(A_{23}) & \det(A_{33}) \\
+\end{pmatrix} $$
+
+Since we want to prove $A⁻¹ = \frac{1}{\det(A)} \adj(A)$, we can also show $I = A⁻¹A = \frac{1}{\det(A)} \adj(A) A$ or rather
+$$ \det(A)I = \adj(A)A $$
+
+$$ \adj(A)A = \begin{pmatrix}
+\det(A₁₁) & -\det(A₂₁) & \det(A₃₁) \\
+-\det(A₁₂) & \det(A₂₂) & -\det(A₃₂) \\
+\det(A₁₃) & -\det(A₂₃) & \det(A₃₃) \\
+\end{pmatrix}
+\begin{pmatrix}
+a₁₁ & a₁₂ & a₁₃ \\
+a₂₁ & a₂₂ & a₂₃ \\
+a₃₁ & a₃₂ & a₃₃ \\
+\end{pmatrix} $$
+
+Expanding the diagonal entries, we see
+\begin{alignat*}{2}
+(\adj(A)A)₁₁ &= a₁₁\det(A₁₁) - a₂₁\det(A₂₁) + a₃₁\det(A₃₁) &&= \det(A) \\
+(\adj(A)A)₂₂ &= a₁₂\det(A₁₂) - a₂₂\det(A₂₂) + a₃₂\det(A₃₂) &&= \det(A) \\
+(\adj(A)A)₃₃ &= a₁₃\det(A₁₃) - a₂₃\det(A₂₃) + a₃₃\det(A₃₃) &&= \det(A) \\
+\end{alignat*}
+The remaining non-diagonal entries $(\adj(A)A)_{ij}$ are of the form
+\begin{align*}
+(\adj(A)A)_{ij} &= \sum_{k=1}^n (\adj(A))_{ik} a_{kj} \\
+    &= \sum_{k=1}^n (-1)^{k + i} a_{kj} \det(A_{ki}) \\
+\end{align*}
+Let $B = (A \leftsquigarrow^i \vec{a}_j)$ be the matrix, where we replace column $i$ in $A$ with column $j$. We can then see that $(\adj(A)A)_{ij} = \det(B)$ for $i ≠ j$. But $B$ has 2 columns that are the same so $(\adj(A)A)_{ij} = \det(B) = 0$.
+
+So finally we have proved the relation and hence the inverse of $A$ by
+$$ \det(A)I = \adj(A)A $$
 
