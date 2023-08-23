@@ -10,4 +10,7 @@
   See https://mathworld.wolfram.com/LightsOutPuzzle.html
 * Proposition 6.23: second sentence before the last should be: v = w + y = w' + y'
 * Definition 6.19: u = w/(w, w)^1/2 is obviously wrong. I think it's u = w/(v, u)
+* Proposition 6.43 has several errors
+    * (i) should be d(u, v) = 0 iff u = v
+    * The proof mixes v, w which makes it very difficult to read
 
