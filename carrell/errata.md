@@ -12,4 +12,5 @@
 * Proposition 6.43 has several errors
     * (i) should be d(u, v) = 0 iff u = v
     * (iii) The proof swaps v and w
+* Exercise 6.8.3: (ii) the ISBN number incorrectly has 9 digits
 
