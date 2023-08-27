@@ -9,6 +9,8 @@
 * Exercise 6.4.23: part 2 is impossible. See ex6.4.23.py
   See https://mathworld.wolfram.com/LightsOutPuzzle.html
 * Proposition 6.23: second sentence before the last should be: v = w + y = w' + y'
+* Definition 6.19: u = w/(w, w)^1/2 is obviously wrong. I think it's u = w/(v, u)
+* Exercise 6.6.7, part 3: r1 is never defined.
 * Proposition 6.43 has several errors
     * (i) should be d(u, v) = 0 iff u = v
     * (iii) The proof swaps v and w
