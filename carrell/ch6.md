@@ -72,3 +72,9 @@ Furthermore if $W = \span U$, then $W \cap U^\perp = \{ \vec{0} \}$.
 We can visualize $W^\perp$ in matrix terms. Let $A ∈ K^{m×n} : \col(A) = \span U = W$
 where $A = (\vec{u}₁ ⋯ \vec{u}_n)$.
 
+Now we are interested in $\vec{v} ∈ U^\perp : ⟨ \vec{v}, \vec{u}_i ⟩ = 0$.
+This is equivalent to $A^T \vec{v} = (⟨\vec{u}₁, \vec{v}⟩ ⋯  ⟨\vec{u}_n, \vec{v}⟩)^T = \vec{0}$.
+$$ ⇒ W^\perp = \mathcal{N}(A^T) $$
+We also have $\dim \mathcal{N}(A^T) = \dim \mathcal{N}(A)$ and $\dim \row(A^T) = \dim \col(A)$ so
+$$ \dim W + \dim W^\perp = m $$
+
