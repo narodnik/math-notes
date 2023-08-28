@@ -11,3 +11,5 @@ Then you can simply run `mdauto foo.md` and it will auto-update when file change
 | `garrity`    | Algebraic Geometry                 | Thomas Garrity | Pause    |
 | `royal-road` | A Royal Road to Algebraic Geometry | Audun Holme    | Pause    |
 
+Check the `pdf` directory for rendered PDFs.
+
