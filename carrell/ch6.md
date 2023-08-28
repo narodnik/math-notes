@@ -72,9 +72,74 @@ Furthermore if $W = \span U$, then $W \cap U^\perp = \{ \vec{0} \}$.
 We can visualize $W^\perp$ in matrix terms. Let $A ∈ K^{m×n} : \col(A) = \span U = W$
 where $A = (\vec{u}₁ ⋯ \vec{u}_n)$.
 
-Now we are interested in $\vec{v} ∈ U^\perp : ⟨ \vec{v}, \vec{u}_i ⟩ = 0$.
+Now we are interested in $\vec{v} ∈ U^\perp : ⟨ \vec{v}, \vec{u}_i ⟩ = 0$ for all $i$.
 This is equivalent to $A^T \vec{v} = (⟨\vec{u}₁, \vec{v}⟩ ⋯  ⟨\vec{u}_n, \vec{v}⟩)^T = \vec{0}$.
 $$ ⇒ W^\perp = \mathcal{N}(A^T) $$
 We also have $\dim \mathcal{N}(A^T) = \dim \mathcal{N}(A)$ and $\dim \row(A^T) = \dim \col(A)$ so
 $$ \dim W + \dim W^\perp = m $$
+
+## $V = W \oplus W^\perp$
+
+Let $\vec{v} ∈ V$ and $\vec{u}₁, …, \vec{u}_k$ be an orthonormal basis of $W$. Then we can put
+$\vec{y} = \vec{v} - \sum_{i = 1}^k ⟨\vec{v}, \vec{u}_i⟩ \vec{u}_i$.
+Since the $\vec{u}_i$ are orthonormal, we have $⟨\vec{y}, \vec{u}_i⟩$ and so $\vec{y} ∈ W^\perp$.
+
+Thus $V = W + W^\perp$ and since $W \cap W^\perp = \{ \vec{0} \}$, we get $V = W \oplus W^\perp. \qed$
+
+# Gram-Schmidt Method
+
+This is an algorithm for producing orthonormal basis from a general basis.
+Let $\vec{v}₁, …, \vec{v}_k$ be a basis.
+
+1. Normalize $\vec{v}₁$ by putting $\vec{u}₁ = \frac{\vec{v}₁}{|\vec{v}₁|}$.
+2. Remove the projection of $\vec{u}₁$ from $\vec{v}₂$ as follows:
+    1. Set $\vec{v}₂' = \vec{v}₂ - ⟨\vec{v}₂, \vec{u}₁⟩\vec{u}₁$.
+    2. Normalize by letting $\vec{u}₂ = \frac{\vec{v}₂'}{|\vec{v}₂'|}$.
+3. Now repeat the process:
+    1. $\vec{v}₃' = \vec{v}₃ - ⟨\vec{v}₃, \vec{u}₁⟩\vec{u}₁ - ⟨\vec{v}₃, \vec{u}₂⟩\vec{u}₂$.
+    2. $\vec{u}₃ = \frac{\vec{v}₃'}{|\vec{v}₃'|}$.
+4. And so on.
+
+# $d(\vec{a}, \vec{c}) ≤ d(\vec{a}, \vec{b}) + d(\vec{b}, \vec{c})$
+
+Denote the sides of a triangle by $\vec{a} = \vec{b} + \vec{c}$.
+\begin{align*}
+⟨\vec{a}, \vec{a}⟩ &= ⟨\vec{b}, \vec{b}⟩ + 2⟨\vec{b}, \vec{c}⟩ + ⟨\vec{c}, \vec{c}⟩ \\
+    &≤ ⟨\vec{b}, \vec{b}⟩ + 2|⟨\vec{b}, \vec{c}⟩| + ⟨\vec{c}, \vec{c}⟩ \\
+    &≤ ⟨\vec{b}, \vec{b}⟩ + 2|\vec{b}| |\vec{c}| + ⟨\vec{c}, \vec{c}⟩ \\
+    &= |\vec{b}| + 2|\vec{b}| |\vec{c}| + |\vec{c}| \\
+    &= (|\vec{b}| + |\vec{c}|)²
+\end{align*}
+using the Cauchy-Schwarz inequality.
+
+# Least Squares Principle
+
+Let $\vec{v} = \vec{w} + \vec{y}$, with $\vec{w} ∈ W$ and $\vec{y} ∈ W^\perp$.
+Then $d(\vec{v}, W) = |y|$.
+
+Let $\vec{w}' = \vec{w} + \vec{m}$, then $\vec{v} - \vec{w}' = \vec{y} + \vec{m}$
+$$ d(\vec{v}, \vec{w'})² = |\vec{y} + \vec{m}|² = |\vec{y}|² + |\vec{m}|² ≥ 0 $$
+since $\vec{y}$ and $\vec{m}$ are orthogonal.
+
+But
+$$ d(\vec{v}, \vec{w})² = |\vec{y}|² ≥ 0$$
+so $d(\vec{v}, \vec{w}) ≤ d(\vec{v}, \vec{w}')$ for all $\vec{w}' ∈ W$.
+
+# Vector Space Quotients
+
+$$ \dim V/W = \dim V - \dim W $$
+
+Suppose $A ∈ 𝔽^{m×n}$, then $𝔽ⁿ/\mathcal{N}(A)$ are the solution sets for
+$A\vec{x} = \vec{b}$ where $\vec{b}$ varies through $𝔽ᵐ$.
+
+$\mathcal{N}(A)$ corresponds to $A\vec{x} = \vec{0}$, and $\vec{p} + \mathcal{N}(A)$
+corresponds to $A\vec{p} = \vec{b}$.
+
+## $\dim (V + W)/W = \dim V/(V \cap W)$
+
+\begin{align*}
+\dim (V + W)/W &= (\dim V + \dim W - \dim (V \cap W)) - \dim W \\
+    &= \dim V - \dim (V \cap W) \\
+    &= \dim V/(V \cap W)
+\end{align*}
 

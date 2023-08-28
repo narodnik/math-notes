@@ -61,6 +61,52 @@ $$ n(τσ) = n(τ) + n(σ) $$
 
 Observe that $\sgn(σ) \sgn(σ⁻¹) = \sgn(σσ⁻¹) = \sgn(e) = 1$. Then since $\sgn(σ), \sgn(σ⁻¹) ∈ \{ -1, 1 \} ⇒ \sgn(σ) = \sgn(σ⁻¹)$.
 
+## $\sgn(σ)$ measures the number of transpositions
+
+Note these facts:
+
+* Every permutation is the product of distinct cycles.
+* $\sgn(σ) = \sgn(σ⁻¹)$ and $\sgn(σσ⁻¹) = 1$
+* So the parity $\sgn(σ)$ is always consistent for all representations.
+
+### Example: $σ = (37)$
+
+Rewriting $σ$ as adjacent transpositions, we see
+$$ σ = \begin{pmatrix}
+⋯ & 3 & 4 & 5 & 6 & 7 & ⋯ \\
+⋯ & 4 & 3 & 5 & 6 & 7 & ⋯ \\
+⋯ & 4 & 5 & 3 & 6 & 7 & ⋯ \\
+⋯ & 4 & 5 & 6 & 3 & 7 & ⋯ \\
+⋯ & 4 & 5 & 6 & 7 & 3 & ⋯ \\
+⋯ & 4 & 5 & 7 & 6 & 3 & ⋯ \\
+⋯ & 4 & 7 & 5 & 6 & 3 & ⋯ \\
+⋯ & 7 & 4 & 5 & 6 & 3 & ⋯ \\
+\end{pmatrix} $$
+where we first do $m - n = 7 - 3 = 4$ swaps corresponding to rows $2-5$.
+Then we finally do $m - n - 1$ swaps corresponding to the remaining rows.
+
+We can thus rewrite the cycle as
+$$ σ = (47)(57)(67)(37)(36)(35)(34) $$
+where we see
+$$ σ = \begin{pmatrix}
+⋯ & 3 & 4 & 5 & 6 & 7 & ⋯ \\
+⋯ & 7 & 4 & 5 & 6 & 3 & ⋯ \\
+\end{pmatrix} $$
+as desired.
+
+The total is $2(m - n) - 1$ adjacent transpositions.
+
+### Correspondence between formulas
+
+Let $σ = (mn)$, then
+$$ \sgn(σ) = \prod_{i < j} \frac{σ(i) - σ(j)}{i - j} = (-1) $$
+We can see by above that the parity of $σ$ can be evaluated by
+counting the number of swaps for all $i < j$.
+For a single transposition, this will be $\sgn(σ) = -1$.
+
+Since $\sgn(σ)$ is multiplicative therefore $\sgn(τ) = \sgn(σ₁)⋯\sgn(σ_k) = (-1)ᵏ$
+where $τ = σ₁ ⋯ σ_k$.
+
 # Leibniz Formula
 
 $$ \det(A) := \sum_{π ∈ S(n)} \sgn(π) a_{π(1)1} ⋯ a_{π(n)n} $$
