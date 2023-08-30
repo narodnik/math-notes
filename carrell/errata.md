@@ -16,4 +16,13 @@
     * (iii) The proof swaps v and w
 * Exercise 6.8.3: (ii) the ISBN number incorrectly has 9 digits
 * Exercise 7.1.1: (i) ψ : Y → X (the F(X) is wrong)
+* Exercise 7.1.15: A^p means exponentiating the elements of A, not matrix multiplication p times:
+    ```
+    sage: K = GF(5)
+    sage: A = matrix([[K.random_element(), K.random_element()], [K.random_element(), K.random_element()]])
+    sage: B = matrix([[K.random_element(), K.random_element()], [K.random_element(), K.random_element()]])
+    sage: F = lambda A: A^5
+    sage: F(A + B) == F(A) + F(B)
+    False
+    ```
 
