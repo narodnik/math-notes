@@ -1,6 +1,7 @@
 ---
 header-includes: |
     - \let\vec\mathbf
+    - \def\nullsp{\mathcal{N}}
     - \def\qed{\hfill\blacksquare}
     - \DeclareMathOperator\sgn{sgn}
     - \DeclareMathOperator\dim{dim}
@@ -9,6 +10,7 @@ header-includes: |
     - \DeclareMathOperator\span{span}
     - \DeclareMathOperator\ker{ker}
     - \DeclareMathOperator\im{im}
+    - \DeclareMathOperator\rank{rank}
 ---
 
 # $∃! \vec{w} ∈ V : T(\vec{v}) = ⟨\vec{v}, \vec{w}⟩$
@@ -39,7 +41,7 @@ t_{\vec{a}₁} \\
 t_{\vec{a}_m}
 \end{pmatrix} $$
 
-Let $\vec{x} ∈ \row(A) \cap \mathcal{N}(A)$ then
+Let $\vec{x} ∈ \row(A) \cap \nullsp(A)$ then
 $$ A \vec{x} = \begin{pmatrix}
 ⟨\vec{a}₁, \vec{x}⟩ \\
 \vdots \\
@@ -72,4 +74,49 @@ Also $⇒ \dim \im(T) = \dim V$, and therefore $\dim \ker(T) = 0$. So $T$ is inj
 $GL(V)$ is the set of all isomorphisms $T: V → V$.
 
 If $V = Kⁿ$, then $GL(V) = GL(n, K)$.
+
+# $\nullsp(A^TA) = \nullsp(A) \;\; ∀ A ∈ ℝ^{n×n} ⇒ \rank(A^TA) = \rank(A)$
+
+$$ (A^T A) b = \begin{pmatrix}
+⟨a₁, a₁⟩ \hdots ⟨a₁, a_n⟩ \\
+\vdots \\
+⟨a_n, a₁⟩ \hdots ⟨a_n, a_n⟩
+\end{pmatrix} b = 0 $$
+for all $i$
+$$ ⟨a_i, r₁ a₁ + ⋯ + r_n a_n⟩ = 0 $$
+$$ ⇒ \vec{x} = (r₁ ⋯ r_n)^T ∈ \nullsp(A) $$
+
+# $TS$ is an Isomorphism $⟺ S$ injective, $T$ surjective, and $\dim U = \dim W$
+
+$U, V, W$ are finite-dimension vector spaces over a field $K$.
+$$ S: U → V $$
+$$ T: V → W $$
+are linear.
+
+## $TS$ is injective $⟺ S$ is injective and $\im(S) ∩ \ker(T) = \{ \vec{0} \}$
+
+$TS$ is injective so $\ker TS = \{ \vec{0} \}$. Restricting $T$, we see
+$$ S : U → V $$
+$$ T : \im(S) → W $$
+that both must be injective, so that $\ker S = \{ \vec{0} \}$ and
+$$ \ker(T) ∩ \im(S) = \{ \vec{0} \} $$
+
+## $TS$ is surjective $⟺ T$ is surjective and $V = \im(S) + \ker(T)$
+
+For $TS: U → V → W$ to be surjective, obviously $T$ is surjective.
+
+Now since $TS$ is surjective, then $T(\im(S)) = W$, and $V = \im(S) + \ker(T)$.
+
+## $TS$ is an isomorphism $⟺ S$ is injective, $T$ is surjective, and $\dim(U) = \dim(W)$
+
+$S$ is injective and finite dimension, means it is also surjective and an isomorphism.
+Likewise for $T$ which is surjective.
+We can see this by letting $𝜙 : A → B$ then
+$$ \dim A = \dim\ker(𝜙) + \dim \im(𝜙) $$
+
+$$ U \xrightarrow{S} V \xrightarrow{T} W $$
+are isomorphisms. So $\ker(S) = \{ \vec{0}_U \}, \ker(T) = \{ \vec{0}_V \}$.
+So $\dim \ker(S) = \dim \ker(T) = 0$, and $\dim \im(S) = \dim(V), \dim \im(T) = \dim(W)$.
+
+Using the Rank-Nullity theorem, we see $\dim(U) = \dim(V)$ for $S$ and $\dim(V) = \dim(W)$ for $T$.
 
