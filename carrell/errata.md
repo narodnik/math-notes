@@ -25,4 +25,5 @@
     sage: F(A + B) == F(A) + F(B)
     False
     ```
+* 7.3.3, the final equation has an extra ) for Pu((v·u)u))
 
