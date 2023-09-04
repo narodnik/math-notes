@@ -11,6 +11,8 @@ header-includes: |
     - \DeclareMathOperator\ker{ker}
     - \DeclareMathOperator\im{im}
     - \DeclareMathOperator\rank{rank}
+    - \DeclareMathOperator\det{det}
+    - \DeclareMathOperator\Rot{Rot}
 ---
 
 # $∃! \vec{w} ∈ V : T(\vec{v}) = ⟨\vec{v}, \vec{w}⟩$
@@ -120,3 +122,182 @@ So $\dim \ker(S) = \dim \ker(T) = 0$, and $\dim \im(S) = \dim(V), \dim \im(T) = 
 
 Using the Rank-Nullity theorem, we see $\dim(U) = \dim(V)$ for $S$ and $\dim(V) = \dim(W)$ for $T$.
 
+# Isometries and Orthogonal Linear Maps
+
+\def \va {\vec{a}}
+\def \vb {\vec{b}}
+\def \vc {\vec{c}}
+\def \vx {\vec{x}}
+\def \vy {\vec{y}}
+\def \ve {\vec{e}}
+\def \vq {\vec{q}}
+\def \vu {\vec{u}}
+\def \vv {\vec{v}}
+\def \vw {\vec{w}}
+\def \vzero {\vec{0}}
+
+Let $S : V → V$ be a map then $∀ \va, \vb ∈ V$, we have
+
+* *Isometry*: $d(\va, \vb) = |\va - \vb| = d(S(\va), S(\vb))$ and $S$ is a linear map.
+* *Orthogonal*: $⟨S(\va), S(\vb)⟩ = ⟨\va, \vb⟩$
+
+## Orthogonal Maps are Linear
+
+We have to show $S(\va + \vb) = S(\va) + S(\vb)$ which is equivalent to
+$|S(\va + \vb) - S(\va) - S(\vb)|² = 0$.
+Simply expand this out, and use the fact $⟨S(\vx), S(\vy)⟩ = ⟨\vx, \vy⟩$.
+
+## Orthogonal Maps are Isometries
+
+\begin{align*}
+|S(\vb) - S(\va)|² &= |S(\vb - \va)|² \\
+    &= ⟨S(\vb - \va), S(\va - \vb)⟩ \\
+    &= ⟨\vb - \va, \vb - \va⟩ \\
+    &= |\vb - \va|²
+\end{align*}
+
+## Isometries are Orthogonal Maps
+
+We have $|\vx - \vy|² = |S(\vx) - S(\vy)|²$ and so $|\vx|² = |S(\vx)|²$
+\begin{align*}
+|\va - \vb|² &= (⟨\va, \va⟩ + ⟨\vb, \vb⟩) - 2⟨\va, \vb⟩ \\
+    &= (⟨S(\va), S(\va)⟩ + ⟨S(\vb), S(\vb)⟩) - 2(\va, \vb⟩
+\end{align*}
+but $⟨\va - \vb, \va - \vb⟩ = ⟨S(\va) - S(\vb), S(\va) - S(\vb)⟩$
+so we get the result
+$$ 2⟨\va, \vb⟩ = 2⟨S(\va), S(\vb)⟩ $$
+
+# Orthogonal Linear Maps on $ℝⁿ$
+
+## Orthogonal maps are associated with a unique orthogonal matrix
+
+Let $T : ℝⁿ → ℝⁿ$ be an isometry. Since $T$ is linear, it is determined by its
+basis and there is a unique $Q ∈ ℝ^{n×n}$ associated with $T$.
+
+$T$ is orthogonal so $⟨T_Q(\vx), T_Q(\vy)⟩ = ⟨\vx, \vy⟩$.
+But $⟨T_Q(\vx), T_Q(\vy)⟩ = ⟨Q\vx, Q\vy⟩ = (Q\vx)^T (Q\vy)$
+$⇒ (Q\vx)^T (Q\vy) = \vx^T \vy$, thus
+$$ \vx^T (Q^T Q) \vx = \vx^T \vy $$
+Setting $Q\ve_i = \vq_i ⇒ \vq_i^T \vq_j = \ve_i^T \ve_j$ and so
+$Q^T Q = I$.
+
+Working backwards, we see the orthogonal matrix defines an isometry.
+
+This means $O(n, ℝ)$ the orthogonal group is also the group of isometries of $ℝⁿ$.
+
+# Projections
+
+$$ P_\va(\vx) = \frac{⟨\va, \vx⟩}{⟨\va, \va⟩} \va $$
+is the *projection* onto $ℝ\va$, and is linear.
+
+When $\va = \vu$ is a unit vector then we see that
+$$ P_\vu(\vx) = \vu^T x \vu $$
+Multiplying this out
+\begin{align*}
+P_\vu\begin{pmatrix} x₁ \\ x₂ \end{pmatrix} &=
+    (u₁ x₁ + u₂ x₂) \begin{pmatrix} u₁ \\ u₂ \end{pmatrix} \\
+    &= \begin{pmatrix}
+        u₁² & u₁u₂ \\
+        u₁u₂ & u₂²
+    \end{pmatrix} \begin{pmatrix} x₁ \\ x₂ \end{pmatrix}
+\end{align*}
+This projection matrix of $P_\vu$ is symmetric. $\im(P_\vu) = ℝ\vu$,
+while $\ker(P_\vu)$ is the line orthogonal to $ℝ\vu$.
+
+A projection has the property that $P\vu ∘ P_\vu = P_\vu$.
+$$ P_\vu ∘ P_\vu(\vv) = ⟨\vu, ⟨\vu, \vv⟩\vu⟩ \vu = ⟨\vu, \vv⟩\vu = P_\vu(\vv) $$
+
+1. $P_W$ is linear
+2. $P_W(\vw) = \vw$ if $\vw ∈ W$
+3. $P_W(W^\perp) = \{ \vzero \}$
+4. $P_W + P_{W^\perp} = I$
+
+# Reflections
+
+Let $\vu ∈ ℓ^\perp$ and decompose $\vv = P_\vu(\vv) + \vc$ with $c ∈ ℓ$.
+\begin{align*}
+H(\vv) &= -P_\vu(\vv) + \vc \\
+    &= -P_\vu(\vv) + (\vv - P_\vu(\vv)) \\
+    &= \vv - 2P_\vu(\vv)
+\end{align*}
+Since $P_\vu$ is a linear map, so $H$ is a linear map.
+
+## Reflection Matrix
+
+$$ H(\vv) = \vv - 2P\vv $$
+$$ Q = (I - 2P) = \begin{pmatrix}
+u₂² - u₁² & -2u₁u₂ \\
+-2u₁u₂ & u₁² - u₂²
+\end{pmatrix} $$
+using the identity $u₁² + u₂² = 1$
+
+We can see this has the form $Q = \begin{pmatrix} a & b \\ b & -a \end{pmatrix}$ where
+$a² + b² = 1$ and is a symmetric orthogonal matrix.
+
+$$ Q² = (I - 2P)² = I - 4P + 4P² = I $$
+since $P² = P$. Since $Q$ is symmetric, $Q = Q^T$ is therefore orthogonal.
+
+# $O(2, ℝ)$-dichotomy
+
+$$ \det: O(2, ℝ) → ℝ^× $$
+$$ Q^T Q = I ⇒ \det(Q) = ±1 $$
+
+$$ Q^T Q = \begin{pmatrix}
+a² + b²  &  ac + bd \\
+ac + bd  &  c² + d²
+\end{pmatrix} = I $$
+
+```python
+sage: var("a b c d")
+(a, b, c, d)
+sage: Q = matrix([[a, b], [c, d]])
+sage: (Q.transpose() * Q).determinant().expand()
+b^2*c^2 - 2*a*b*c*d + a^2*d^2
+sage: 
+sage: c = -b*d/a
+sage: d2 = a^2 + b^2 - c^2
+sage: d2 = d2.expand()
+sage: d2
+a^2 + b^2 - b^2*d^2/a^2
+sage: e = d^2 - d2 == 0
+sage: e
+-a^2 - b^2 + b^2*d^2/a^2 + d^2 == 0
+sage: e -= b^2*d^2/a^2 + d^2
+sage: e
+-a^2 - b^2 == -b^2*d^2/a^2 - d^2
+sage: e /= (-b^2/a^2 - 1)
+sage: e.simplify_full()
+a^2 == d^2
+```
+Either $a = d$ or $a = -d$.
+
+## $\ker(\det) = \Rot(2)$
+
+Let $a = d ⇒ b = -c$ and $Q₁ = \begin{pmatrix}
+a & -b \\
+b & a \end{pmatrix}$.
+
+Then $\det(Q₁) = a² + b² = 1$.
+But this is the form of the rotation matrices
+$R_θ = \begin{pmatrix}
+\cos θ & -\sin θ \\
+\sin θ & \cos θ
+\end{pmatrix}$.
+
+## $O(2, ℝ) - \Rot(2)$ are Reflections
+
+Let $a = -d ⇒ b = c$ and $Q₂ = \begin{pmatrix}
+a & b \\
+b & -a \end{pmatrix}$.
+Rewriting it
+$$ Q₂ = \begin{pmatrix}
+1 & 0 \\
+0 & -1 \end{pmatrix} \begin{pmatrix}
+a & -b \\
+b & a \end{pmatrix} = \begin{pmatrix}
+a & c \\
+c & -a \end{pmatrix} $$
+So $Q₂$ is a reflection and a rotation (coset of $Q₁$).
+
+$\vv = (-c \;\; a + 1)^T, \vw = (a + 1 \;\; c)$ are orthogonal,
+and $Q\vv = -\vv$, $Q\vw = \vw$. Normalize them to get an orthonormal basis.

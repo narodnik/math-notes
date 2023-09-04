@@ -25,6 +25,7 @@
     sage: F(A + B) == F(A) + F(B)
     False
     ```
+* 7.3.3, "A reflection Pu" should instead say "A projection Pu" (sentence before final equation)
 * 7.3.3, the final equation has an extra ) for Pu((v·u)u))
 * Definition 7.4: the equation for Q² = (I2 ... The 2 is a typo.
 
