@@ -107,3 +107,48 @@ Putting this all together
 \end{align*}
 but $(AB)^T_{,k} = (AB)_{k,}$
 
+# Forms of Matrix Multiplication
+
+\def \va {\vec{a}}
+\def \vb {\vec{b}}
+\def \vx {\vec{x}}
+
+## Column and Row Form
+
+$$ A = (\va₁ ⋯ \va_n), \vx = \begin{pmatrix} x₁ \\ \vdots \\ x_n \end{pmatrix} $$
+$$ A\vx = x₁ \va₁ + ⋯ + x_n \va_n $$
+
+$$ A = \begin{pmatrix} \va₁ \\ \vdots \\ \va_n \end{pmatrix}, \vx = (x₁ ⋯ x_n) $$
+$$ \vx A = x₁ \va₁ + ⋯ + x_n \va_n $$
+
+## As a Dot Product
+
+$$ A = \begin{pmatrix} \va₁ \\ \vdots \\ \va_n \end{pmatrix},
+\vx = \begin{pmatrix} x₁ \\ \vdots \\ x_n \end{pmatrix} $$
+$$ A \vx = \begin{pmatrix} ⟨\va₁, \vx⟩ \\ \vdots \\ ⟨\va_n, \vx⟩ \end{pmatrix} $$
+
+$$ A = \begin{pmatrix} \va₁ \\ \vdots \\ \va_n \end{pmatrix},
+B = (\vb₁ ⋯ \vb_m) $$
+$$ AB = \begin{pmatrix}
+⟨\va₁, \vb₁⟩ \hdots ⟨\va₁, \vb_m⟩ \\
+\vdots \\
+⟨\va_n, \vb₁⟩ \hdots ⟨\va_n, \vb_m⟩
+\end{pmatrix} $$
+
+A consequence of this is that $A^T A$, where $A = (\va₁ ⋯ \va_n)$ is
+$$ A^T A = \begin{pmatrix}
+⟨\va₁, \va₁⟩ ⋯ ⟨\va_n, \va_n⟩ \\
+\vdots \\
+⟨\va_n, \va₁⟩ ⋯ ⟨\va_n, \va_n⟩
+\end{pmatrix} $$
+and likewise for $A A^T$ when $A = \begin{pmatrix} \va₁ \\ \vdots \\ \va_n \end{pmatrix}$.
+
+## Matrix as Map on Columns and Rows
+
+$$ A = \begin{pmatrix} \va₁ \\ \vdots \\ \va_n \end{pmatrix},
+B = (\vb₁ ⋯ \vb_m) $$
+\begin{align*}
+AB &= (A\vb₁ ⋯ A\vb_m) \\
+    &= \begin{pmatrix} \va₁ B \\ \vdots \\ \va_n B \end{pmatrix}
+\end{align*}
+
