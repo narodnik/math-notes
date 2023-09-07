@@ -301,3 +301,51 @@ So $Q₂$ is a reflection and a rotation (coset of $Q₁$).
 
 $\vv = (-c \;\; a + 1)^T, \vw = (a + 1 \;\; c)$ are orthogonal,
 and $Q\vv = -\vv$, $Q\vw = \vw$. Normalize them to get an orthonormal basis.
+
+# Exercise 7.3.9: Projection on Subspace Without Orthonormal Basis
+
+$W$ is a subspace with $\dim W = n$ of $ℝᵐ$ with a basis $A = (\va₁ ⋯ \va_n)$.
+
+## Let $\vx ∈ ℝⁿ$, when is $A\vx$ the projection of $\vx$ on $W$?
+
+$$ \vx = ⟨\va₁, A\vx⟩ + ⋯ + ⟨\va_n, A\vx⟩ ⇒ A^T A\vx = \vx $$
+
+## Prove $A^T A$ is invertible
+
+Because we're working in $ℝ$, all dot products are non-negative
+$$ ⟨Ax, Ax⟩ ≥ 0 $$
+with the only zero being when $A\vx = \vzero$. But $\dim \col(A) = n ⇒ \dim \ker(A) = 0 ⇒ \vx = \vzero$.
+
+Thus $\ker(A^TA) = \{ \vzero \}$.
+
+## Let $P = A(A^T A)⁻¹A^T$. Prove $P\vx ∈ W$ if $\vx ∈ ℝᵐ$, and $P\vx = \vx$ if $\vx ∈ W$
+
+$$ T_A : ℝⁿ → ℝᵐ $$
+$$ T_{A^T} : ℝᵐ → ℝⁿ $$
+$$ T_{(A^T A)} : ℝⁿ → ℝⁿ $$
+$$ T_{(A^T A)⁻¹A^T} : ℝᵐ → ℝⁿ $$
+Let $\vy = T_{(A^T A)⁻¹A^T}(\vx) ∈ ℝⁿ$, then since $\col(A) = W$, and $∀ \vv ∈ ℝⁿ, A\vv ∈ W$,
+so $A\vy ∈ W$.
+
+We showed in the previous part that $\ker(A^T A) = \{ \vzero \} ⇒ T_{(A^T A)}$ is an isomorphism
+with inverse $T_{(A^T A)⁻¹} : ℝⁿ → ℝⁿ$ so
+$$ T_{(A^T A)⁻¹} T_{(A^T A)} = T_{(A^T A)⁻¹} T_{A^T} T_A = e $$
+which means that
+$$ (A^T A)⁻¹ A^T A = I_n $$
+but $A = (\va₁ ⋯ \va_n)$ so we can left multiply by $A$
+$$ (A^T A)⁻¹ A^T A = (\ve₁ ⋯ \ve_n) $$
+$$ (A^T A)⁻¹ A^T \va_i = \ve_i ⇒ A(A^T A)⁻¹ A^T \va_i = \va_i $$
+which when viewing $\vx = r₁ \va₁ + ⋯ + r_n \va_n ∈ W$, we prove the result.
+
+## $\vv - P\vv$ is orthogonal to $W, ∀\vv ∈ ℝᵐ$
+
+We can extend the basis $A = (\va₁ ⋯ \va_n)$ of $W$ to a basis of $ℝᵐ$.
+
+Let $\vv = P\vv + \vc$. We see $P\vv ∈ W ⇒ \vc ∉ W$. Since $ℝᵐ = W ⊕ W^⟂$,
+so $\vc ∈ W^⟂$ and $⟨\va_i, \vc⟩ = \vzero$ but $\vc = \vv - P\vv$ and
+$A^T \vc = \vzero$ is equivalent to $\begin{pmatrix}
+⟨\va₁, \vc⟩ \\
+\vdots \\
+⟨\va_n, \vc⟩
+\end{pmatrix} = \vzero$.
+
