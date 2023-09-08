@@ -1,8 +1,10 @@
 ---
 header-includes: |
-    - \newcommand{\row}[1]{\textrm{row}({#1})}
-    - \let\vec\mathbf
+    \newcommand{\row}[1]{\textrm{row}({#1})}
+    \let\vec\mathbf
+    \let\M\parenMatrixstack
 ---
+
 
 # Matrix Multiplication
 
@@ -148,7 +150,11 @@ and likewise for $A A^T$ when $A = \begin{pmatrix} \va₁ \\ \vdots \\ \va_n \en
 $$ A = \begin{pmatrix} \va₁ \\ \vdots \\ \va_n \end{pmatrix},
 B = (\vb₁ ⋯ \vb_m) $$
 \begin{align*}
-AB &= (A\vb₁ ⋯ A\vb_m) \\
-    &= \begin{pmatrix} \va₁ B \\ \vdots \\ \va_n B \end{pmatrix}
+AB &= (A𝐛₁ ⋯ A𝐛ₘ) \\
+   &= \M{
+        𝐚₁B  ;
+        ⋮    ;
+        𝐚ₙB
+    }
 \end{align*}
 
