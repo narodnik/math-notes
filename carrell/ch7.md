@@ -349,3 +349,39 @@ $A^T \vc = \vzero$ is equivalent to $\begin{pmatrix}
 ⟨\va_n, \vc⟩
 \end{pmatrix} = \vzero$.
 
+# Exercise 7.3.10
+
+$$ Q = \begin{pmatrix}
+a & b \\
+b & -a
+\end{pmatrix} : a² + b² = 1
+\sim
+Q = \begin{pmatrix}
+1 - 2u₁² & -2u₁u₂ \\
+-2u₁u₂   & 1 - 2u₂²
+\end{pmatrix} : u₁² + u₂² = 1 $$
+$$ X = \bar{K}[u₁, u₂] / ⟨u₁² + u₂² - 1⟩ $$
+$$ Y = \bar{K}[a, b] / ⟨a² + b² - 1⟩ $$
+$$ 𝜙 : X → Y $$
+$$ 𝜙(u₁, u₂) = (-u₁² + u₂², -2u₁u₂) $$
+We prove $𝜙$ is an isomorphism.
+
+Surjective: $b = 0 ⇒$ either $u₁$ or $u₂$ is $0$.
+But also $a = 0 ⇒ u₂$ or $u₁$ is $0$.
+Thus $\ker 𝜙 = \{ \vzero \}$.
+
+Injective:
+\begin{align*}
+a &= -u₁² + u₂² \\
+    &= (u₁² + u₂² - 1) + 1 - 2u₁² \\
+    &= 1 - 2u₁² \\
+⇒ u₁² &= \frac{1 - a}{2} \\
+u₂ &= -\frac{b}{2u₁}
+\end{align*}
+
+*Show $Q$ is a reflection through $\mathbb{R}\begin{pmatrix} -u₂ \\ u₁ \end{pmatrix}$.*
+$$ \vv = \begin{pmatrix} -u₂ \\ u₁ \end{pmatrix} $$
+We want $\vw$ such that $⟨\vv, \vw⟩ = 0 ⇒ \vw = \begin{pmatrix} u₁ \\ u₂ \end{pmatrix}$.
+
+Calculating, we see $Q\vv = \vv$ and $Q\vw = -\vw$, so $Q$ is the reflection around $\vv$.
+
