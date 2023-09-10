@@ -436,3 +436,39 @@ $$ ℳ ᴮ_B(P_𝐚) = \M{
     0,          0
 } $$
 
+# Dual Space
+
+$$ V^* = L(V, 𝔽) $$
+$$ 𝐯ᵢ^*(𝐯ⱼ) = δᵢⱼ $$
+
+## If $𝐯₁, …, 𝐯ₙ$ is a basis of $V$, then $𝐯₁^*, …, 𝐯ₙ^*$ is a basis of $V^*$
+
+$$ f(𝐱) = a₁𝐯₁(𝐱) + ⋯  + aₙ𝐯ₙ(𝐱) = 𝟎(𝐱) $$
+Evaluating this on the basis of $V$, we see
+$$ f(𝐯ᵢ) = aⱼ \textrm{ and } 𝟎(𝐯ᵢ) = 0 ⟹  aⱼ = 0 $$
+
+## $Φ(𝐯) = φ_𝐯$ is an Isomorphism
+
+Let $V$ be a finite-dimensional inner product space over $ℝ$.
+$$ φ_𝐯 : V → ℝ $$
+$$ φ_𝐯(𝐱) = ⟨𝐯, 𝐱⟩ $$
+$$ Φ : V → V^* $$
+$$ Φ(𝐯) = φ_𝐯 $$
+Since $\dim V = \dim V^*$, we only have to show $Φ$ is injective.
+
+$Φ(𝐯) = 𝟎 ⟹  ⟨𝐯, 𝐱⟩ = 0$ for all $𝐱$ including $𝐱 = 𝐯$. So $\ker Φ = \{ 𝟎 \}$.
+
+# Characterization of the Determinant
+
+## For any $σ ∈ S(n), 𝒟 (C_{σ(1)}, …, C_{σ(n)}) = \sgn(σ) 𝒟 (C₁, …, Cₙ)$
+
+Decompose $σ$ into a product of transpositions and apply $𝒟 (AE) = -𝒟 (A)$.
+
+## Equivalence with $\det(C)$
+
+Let $𝐜ⱼ = ∑ᵢ bᵢⱼ 𝐚ᵢ$ where $A = (𝐚₁ ⋯  𝐚ₙ), C = (𝐚₁ ⋯  𝐚ₙ)$, then applying multilinearity, we see
+$$ 𝒟 (C) = \left( ∑_{σ ∈ S(n)} \sgn(σ) b_{σ(1),1} ⋯  b_{σ(n),n} \right) 𝒟 (A) $$
+just by expanding out each column of $C$. Then set $A = I$ and get the desired result.
+
+This also gives us the product rule for determinants since $C = AB$.
+
