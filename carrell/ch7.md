@@ -545,7 +545,7 @@ $$ \dim(T) = \dim(A) = \dim(Aᵀ) = \dim(T^*) $$
 
 ## Natural Surjective Linear Map $S : W^* → V^*$ for $V ⊆ W$
 
-$$ S(𝐰ᵢ^*) = \begin{cases}
-𝐯ᵢ^* & i ≤ \dim V \\
-𝟎    & \textrm{ otherwise }
-\end{cases} $$
+$$ S(𝐰^*)(𝐯) = 𝐰^*(𝐯) $$
+
+Write $𝐰 = 𝐯 + 𝐜$, then $S(𝐰^*) = S(𝐯^*) + S(𝐜^*)$, which for all $𝐱 ∈ V, S(𝐰*)(𝐱) = 𝐯*(𝐱)$
+
