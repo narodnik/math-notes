@@ -2,6 +2,7 @@
 header-includes: |
     - \let\vec\mathbf
     - \let\M\parenMatrixstack
+    - \let\;\quad
     - \def\nullsp{\mathcal{N}}
     - \def\qed{\hfill\blacksquare}
     - \DeclareMathOperator\sgn{sgn}
@@ -472,3 +473,79 @@ just by expanding out each column of $C$. Then set $A = I$ and get the desired r
 
 This also gives us the product rule for determinants since $C = AB$.
 
+\def \Vss {V^{**}}
+\def \Vs {V^*}
+
+# Exercise 7.5.1: Isomorphism $Δ : V → \Vss$
+
+$$ 𝐯 ∈ V, \; f_𝐯 = Δ(𝐯) ∈ \Vss, \; f_𝐯(φ) = φ(𝐯) $$
+Now let $𝐰 ∈ \ker Δ$, then $g = Δ(𝐰)$ and $g(φ) = φ(𝐰) = 0$ for all $φ ∈ V^*$.
+
+Since $𝐰$ can be written in terms of a basis, let $xِ₁, …, xₙ ∈ \Vs$ be the respective component functions so $x₁(𝐰 ) = ⋯  = xₙ(𝐰 ) = 0$ and we see $𝐰 = 𝟎$ so we prove injectivity.
+
+$$ \dim L(V, 𝔽) = n = \dim V $$
+so $\dim \Vss = \dim V$, and surjectivity follows from the above on $Δ$ being injective.
+
+Lastly since $\Vs = L(V, 𝔽)$ consists of linear maps with additive property
+\begin{align*}
+Δ(𝐯 + 𝐰 )(φ) &= φ(𝐯 + 𝐰 ) \\
+    &= φ(𝐯) + 𝜙(𝐰 ) \\
+    &= Δ(𝐯)(φ) + Δ(𝐰)(φ)
+\end{align*}
+proving $Δ$ is a homomorphism.
+
+# Exercise 7.5.2: Adjoint Map $T^* : W^* → V^*$
+
+$$ T^*(ω) = ω∘T $$
+
+## $T^*$ is Well-Defined and Linear
+
+$W^* = L(W, 𝔽)$, and $T : V → W$, so it follows their composition is well defined and linear.
+
+## Matrix of $T^*$ wrt Dual Bases
+
+$$ T(𝐯₁) = a₁₁𝐰₁ + ⋯  + aₘ₁𝐰ₘ $$
+$$ T^*(𝐰₁^*)(𝐯₁) = 𝐰₁^*(T(𝐯₁)) = a₁₁ $$
+$$ … $$
+$$ T^*(𝐰ₘ^*)(𝐯₁) = aₘ₁ $$
+$$ … $$
+$$ T^*(𝐰₁^*)(𝐯ₙ) = a₁ₙ $$
+$$ … $$
+$$ T^*(𝐰ₘ^*)(𝐯ₙ) = aₘₙ $$
+
+$$ T^*(𝐰₁^* ⋯ 𝐰ₘ^*) = (𝐯₁^* ⋯ 𝐯ₙ^*)B $$
+$$ T^*(𝐰₁^*)(𝐯₁) = a₁₁ \; T^*(𝐰₁^*)(𝐯ₙ) = a₁ₙ $$
+$$ ⟹  T^*(𝐰₁^*) = a₁₁𝐯₁^* + ⋯  + a₁ₙ𝐯ₙ* $$
+$$ B = \M{
+    a₁₁, ⋯ , a₁ₙ  ;
+       ,  ⋮,      ;
+    aₘ₁, ⋯ , aₘₙ
+} = Aᵀ $$
+
+## If $T$ is injective, then $T^*$ is surjective
+
+$$ f ∈ V^* \; T^*(ω) = ω∘T $$
+we prove there exists $ω ∈ W^*$ such that $f = ωT ∈ V^*$.
+
+Since $f$ is linear, it suffices to prove $𝐯ᵢ^* ∈ \im T^*(W^*)$ for a single basis element of $V^*$.
+
+Let $V^⟂$ be the space orthogonal to $𝐯ᵢ$. Then because $T$ is injective, $T𝐯ᵢ ∉ V^⟂$. Therefore we can define $ω$ such that $ω(T𝐯ᵢ) = 1$ and $ω(T𝐯ⱼ) = 0$ for all $j ≠ i$.
+
+But then since $f(𝐯ᵢ) = ω∘T(𝐯ᵢ) = 1$, and $f(𝐯ⱼ) = 0$ for $j ≠ i$, we have $f = 𝐯ᵢ^*$.
+
+## If $T$ is surjective, then $T^*$ is injective
+
+Let $T^*(z₁) = T^*(z₂)$, then $z₁T = z₂T ∈ V^*$.
+
+Since $T$ is surjective, both $z₁, z₂ ∈ W^* = L(W, 𝔽)$ are defined over all of $W$, so $z₁(𝐰) = z₂(𝐰) \; ∀ 𝐰 ∈ W ⟹  z₁ = z₂$.
+
+## $\dim \im(T) = \dim \im(T^*)$
+
+$$ \dim(T) = \dim(A) = \dim(Aᵀ) = \dim(T^*) $$
+
+## Natural Surjective Linear Map $S : W^* → V^*$ for $V ⊆ W$
+
+$$ S(𝐰ᵢ^*) = \begin{cases}
+𝐯ᵢ^* & i ≤ \dim V \\
+𝟎    & \textrm{ otherwise }
+\end{cases} $$
