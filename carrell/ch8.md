@@ -53,7 +53,14 @@ for the remaining minor matrices $A₍ₙ₋ₘ₎₍ₙ₋ₘ₎$. Note that in
 
 Thus we get the generalized formula for characteristic polynomial.
 
-# Exercise 8.1.10
+# Exercises 8.1
+
+## Ex 8.1.10: Matrices with Same Charpoly are Similar
 
 Let $B = \M{3, -2; 2, -1}$, then $\charpoly(B) = \charpoly(I)$ but they are not similar since $S = PIP⁻¹ = I$.
+
+## Ex 8.1.12: $0$ is an Eigenvalue of $A ⟺ A$ is Singular
+
+This means the constant term of charpoly is $0$. Therefore there is a row $i$ with $(A - xI)ᵢᵢ = -x$ and all other entries $0$.
+Which means $A$ has a row of all zeroes, and hence is singular.
 
