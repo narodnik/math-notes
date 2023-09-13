@@ -15,6 +15,7 @@ header-includes: |
     - \DeclareMathOperator\rank{rank}
     - \DeclareMathOperator\det{det}
     - \DeclareMathOperator\Rot{Rot}
+    - \DeclareMathOperator\charpoly{charpoly}
 ---
 
 # $σᵢ(A)$ Formula
@@ -51,4 +52,8 @@ We can generalize the argument above, by fixing $π(i₁) = i₁, …, π(iₘ) 
 for the remaining minor matrices $A₍ₙ₋ₘ₎₍ₙ₋ₘ₎$. Note that in the multilinear expansion, the leading unit is $(-1)ᵐ$.
 
 Thus we get the generalized formula for characteristic polynomial.
+
+# Exercise 8.1.10
+
+Let $B = \M{3, -2; 2, -1}$, then $\charpoly(B) = \charpoly(I)$ but they are not similar since $S = PIP⁻¹ = I$.
 
