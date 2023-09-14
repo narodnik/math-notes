@@ -29,4 +29,5 @@
 * 7.3.3, the final equation has an extra ) for Pu((v·u)u))
 * Definition 7.4: the equation for Q² = (I2 ... The 2 is a typo.
 * Exercise 7.3.9, part (iv): minor point but the 0 should be bold since it's ∈ ℝᵐ
+* Section 8.1: on the last page before the exercises, the determinant is given in terms of the trace. But the actual formula given is 6 det(A)
 
