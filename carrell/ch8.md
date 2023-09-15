@@ -18,6 +18,7 @@ header-includes: |
     - \DeclareMathOperator\charpoly{charpoly}
     - \DeclareMathOperator\Tr{Tr}
     - \DeclareMathOperator\Re{Re}
+    - \DeclareMathOperator\diagonal{diagonal}
 ---
 
 # $σᵢ(A)$ Formula
@@ -75,6 +76,28 @@ Assume WLOG that $λ₁ = 0$.
 
 Since $\Tr(A) = λ₁ + λ₂ + λ₃ = λ₂ + λ₃ = 0 ⟹  λ₂ = -λ₃$. But since they determine the roots of charpoly with real coefficients $λ₂ = \bar{λ₃}$ also. This means $\Re(λ₃) = \Re(λ₂) = 0$. Thus the 2 remaining eigenvalues are complex with non-real part. This means both eigenvectors are also complex.
 
+## Ex 8.1.19
+
+```sage
+sage: K = GF(2)
+sage: A = matrix(K, [[1, 0, 1], [0, 1, 0], [1, 0, 1]])
+sage: A.charpoly().factor()
+(x + 1) * x^2
+sage: A.determinant()
+0
+sage: A = matrix(K, [[1,0,0,0,1],[0,1,0,1,0],[0,0,1,0,0],[0,1,0,1,0],[1,0,0,0,1]])
+sage: A.determinant()
+0
+sage: A.trace()
+1
+sage: A.charpoly().factor()
+(x + 1) * x^4
+```
+Any diagonal matrix similar to $X₁$ has the same charpoly.
+Since it is diagonal, then $\diagonal(D - xI) = \{ x + 1, x, x \}$ (in any order)
+$⟹ \digaonal(D) = \{ 1, 0, 0 \}$. Since the trace and determinant are unchanged
+for similar matrices, we see that $\det(D) ≠ \det(A)$ which is a contradiction.
+
 # Ex 8.1.20
 
 $$ p(x) ∈ ℝ[x] : p(z) = 0 = \repr{p(z)} = p(\repr{z}) \textrm{ since } p(x) = \repr{p(x)} $$
@@ -83,4 +106,3 @@ $$ p(x) ∈ ℝ[x] : p(z) = 0 = \repr{p(z)} = p(\repr{z}) \textrm{ since } p(x) 
 
 Orthogonal matrix means $⟨𝐮ᵢ, 𝐮ⱼ⟩ = 0$ for all $i ≠ j$ or equivalently $QᵀQ = I$.
 $$ Q𝐯 = λ𝐯 \; 𝐯ᵀQᵀQ𝐯 = λ²⟨𝐯, 𝐯⟩ = ⟨𝐯, 𝐯⟩ ⟹  λ = ±1 $$
-
