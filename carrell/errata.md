@@ -30,4 +30,6 @@
 * Definition 7.4: the equation for Q² = (I2 ... The 2 is a typo.
 * Exercise 7.3.9, part (iv): minor point but the 0 should be bold since it's ∈ ℝᵐ
 * Section 8.1: on the last page before the exercises, the determinant is given in terms of the trace. But the actual formula given is 6 det(A)
+* Exercise 8.1.26: B and AB (or BA) do not have the same characteristic polynomial.
+* Exercise 8.1.28: (iii) set a = -1, b = -1, c = -2, then det(A) = 4 contradicting the claim that det(A) ≤ 0.
 

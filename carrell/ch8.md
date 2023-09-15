@@ -75,3 +75,12 @@ Assume WLOG that $λ₁ = 0$.
 
 Since $\Tr(A) = λ₁ + λ₂ + λ₃ = λ₂ + λ₃ = 0 ⟹  λ₂ = -λ₃$. But since they determine the roots of charpoly with real coefficients $λ₂ = \bar{λ₃}$ also. This means $\Re(λ₃) = \Re(λ₂) = 0$. Thus the 2 remaining eigenvalues are complex with non-real part. This means both eigenvectors are also complex.
 
+# Ex 8.1.20
+
+$$ p(x) ∈ ℝ[x] : p(z) = 0 = \repr{p(z)} = p(\repr{z}) \textrm{ since } p(x) = \repr{p(x)} $$
+
+# Ex 8.1.22
+
+Orthogonal matrix means $⟨𝐮ᵢ, 𝐮ⱼ⟩ = 0$ for all $i ≠ j$ or equivalently $QᵀQ = I$.
+$$ Q𝐯 = λ𝐯 \; 𝐯ᵀQᵀQ𝐯 = λ²⟨𝐯, 𝐯⟩ = ⟨𝐯, 𝐯⟩ ⟹  λ = ±1 $$
+
