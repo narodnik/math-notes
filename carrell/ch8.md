@@ -95,7 +95,7 @@ sage: A.charpoly().factor()
 ```
 Any diagonal matrix similar to $X₁$ has the same charpoly.
 Since it is diagonal, then $\diagonal(D - xI) = \{ x + 1, x, x \}$ (in any order)
-$⟹ \digaonal(D) = \{ 1, 0, 0 \}$. Since the trace and determinant are unchanged
+$⟹ \diagonal(D) = \{ 1, 0, 0 \}$. Since the trace and determinant are unchanged
 for similar matrices, we see that $\det(D) ≠ \det(A)$ which is a contradiction.
 
 # Ex 8.1.20
