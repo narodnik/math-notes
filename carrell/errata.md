@@ -32,4 +32,5 @@
 * Section 8.1: on the last page before the exercises, the determinant is given in terms of the trace. But the actual formula given is 6 det(A)
 * Exercise 8.1.26: B and AB (or BA) do not have the same characteristic polynomial.
 * Exercise 8.1.28: (iii) set a = -1, b = -1, c = -2, then det(A) = 4 contradicting the claim that det(A) ≤ 0.
+* Exercise 8.2.9: refers to a strange expression in Section 5.1 but it's not clear what it's referring to.
 
