@@ -106,3 +106,12 @@ $$ p(x) ∈ ℝ[x] : p(z) = 0 = \repr{p(z)} = p(\repr{z}) \textrm{ since } p(x) 
 
 Orthogonal matrix means $⟨𝐮ᵢ, 𝐮ⱼ⟩ = 0$ for all $i ≠ j$ or equivalently $QᵀQ = I$.
 $$ Q𝐯 = λ𝐯 \; 𝐯ᵀQᵀQ𝐯 = λ²⟨𝐯, 𝐯⟩ = ⟨𝐯, 𝐯⟩ ⟹  λ = ±1 $$
+
+# Distinct Eigenvalues Produce Linearly Independent Eigenvectors
+
+Let $α₁𝐯₁ + α₂𝐯₂ = 𝟎$. We want to show $α₁ = α₂ = 0$. Since $A𝐯₁ = λ₁$ and $A𝐯₂ = λ₂$,
+so $A(α₁𝐯₁ + α₂𝐯₂) = α₁λ₁𝐯₁ + α₂λ₂𝐯₂ = 𝟎$. Subtracting $λ₁$ times the original equation,
+we get
+$$ α₂(λ₂ - λ₁)𝐯₂ = 𝟎 ⟹ α₂ = 0 $$
+since $λ₁ ≠ λ₂$. Then we conclude $α₁ = 0$.
+
