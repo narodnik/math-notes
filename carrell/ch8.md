@@ -115,3 +115,55 @@ we get
 $$ α₂(λ₂ - λ₁)𝐯₂ = 𝟎 ⟹ α₂ = 0 $$
 since $λ₁ ≠ λ₂$. Then we conclude $α₁ = 0$.
 
+# Union of Subset of Independent Eigenvectors is Independent
+
+**Proposition 8.10:** *Suppose $λ₁, …, λₘ ∈ 𝔽$ are distinct eigenvalues of $A ∈ 𝔽^{n×n}$, and choose
+a set $Sᵢ$ of linearly independent eigenvectors in the eigenspace
+$$ E_{λᵢ} = \{ 𝐯 | (A - λᵢI)𝐯 = 𝟎 \} = 𝒩 (A - λᵢI) $$
+for all $1 ≤ i ≤ m$. Then the union of these linearly independent sets $S = S₁ ∪ ⋯ ∪ Sₘ$ is also
+linearly independent.*
+
+Suppose $A₁ = \{ \M{1, 0}ᵀ \}, A₂ = \{ \M{0, 1}ᵀ \}, A₃ = \{ \M{1, 1}ᵀ \}$. Then $Aᵢ ∩ Aⱼ = \{ 𝟎 \}$
+for all $i ≠ j$, but $A₁ ∪ A₂ ∪ A₃$ is linearly dependent. So the result is not generally automatic
+and needs to be proven for this specific case.
+
+Denote the elements of $S$ as
+$$ S = \{ 𝐮₁⁽¹⁾, …, 𝐮⁽¹⁾_{t₁}, 𝐮₁⁽²⁾, …, 𝐮⁽²⁾_{t₂}, …, 𝐮₁⁽ᵐ⁾, …, 𝐮⁽ᵐ⁾_{tₘ} \} $$
+We want to show this set is linearly independent, so assume
+$$ a₁⁽¹⁾𝐮₁⁽¹⁾ + ⋯ + a⁽¹⁾_{t₁} 𝐮⁽¹⁾_{t₁} + a₁⁽²⁾𝐮₁⁽²⁾ + ⋯ + a⁽²⁾_{t₂} 𝐮⁽²⁾_{t₂} + ⋯ + a₁⁽ᵐ⁾ 𝐮₁⁽ᵐ⁾ + ⋯ + a⁽ᵐ⁾_{tₘ} 𝐮⁽ᵐ⁾_{tₘ} = 𝟎 $$
+
+\begin{align*}
+M₁ &= \{ 𝐮₁⁽¹⁾, …, 𝐮⁽¹⁾_{t₁} \} \\
+M₂ &= \{ 𝐮₁⁽²⁾, …, 𝐮⁽²⁾_{t₂} \} \\
+    & … \\
+Mₘ &= \{ 𝐮₁⁽ᵐ⁾, …, 𝐮⁽ᵐ⁾_{tₘ} \}
+\end{align*}
+
+\begin{align*}
+𝐯₁ &= a₁⁽¹⁾ 𝐮₁⁽¹⁾ + ⋯ + a⁽¹⁾_{t₁} 𝐮⁽¹⁾_{t₁} ∈ E_{λ₁} \\
+𝐯₂ &= a₁⁽²⁾ 𝐮₁⁽²⁾ + ⋯ + a⁽²⁾_{t₂} 𝐮⁽²⁾_{t₂} ∈ E_{λ₂} \\
+    & … \\
+𝐯ₘ &= a₁⁽ᵐ⁾ 𝐮₁⁽ᵐ⁾ + ⋯ + a⁽ᵐ⁾_{tₘ} 𝐮⁽ᵐ⁾_{tₘ} ∈ E_{λ₃}
+\end{align*}
+The elements $\{ 𝐮₁⁽ⁱ⁾, …, 𝐮⁽ⁱ⁾_{tᵢ} \} ∈ E_{λᵢ}$ were chosen to be linearly independent from the set $E_{λᵢ}$ and we have
+\begin{align*}
+𝟎 &= a₁⁽¹⁾𝐮₁⁽¹⁾ + ⋯ + a⁽¹⁾_{t₁} 𝐮⁽¹⁾_{t₁} + a₁⁽²⁾𝐮₁⁽²⁾ + ⋯ + a⁽²⁾_{t₂} 𝐮⁽²⁾_{t₂} + ⋯ + a₁⁽ᵐ⁾ 𝐮₁⁽ᵐ⁾ + ⋯ + a⁽ᵐ⁾_{tₘ} 𝐮⁽ᵐ⁾_{tₘ} \\
+    &= (a₁⁽¹⁾𝐮₁⁽¹⁾ + ⋯ + a⁽¹⁾_{t₁} 𝐮⁽¹⁾_{t₁}) + (a₁⁽²⁾𝐮₁⁽²⁾ + ⋯ + a⁽²⁾_{t₂} 𝐮⁽²⁾_{t₂}) + ⋯ + (a₁⁽ᵐ⁾ 𝐮₁⁽ᵐ⁾ + ⋯ + a⁽ᵐ⁾_{tₘ} 𝐮⁽ᵐ⁾_{tₘ}) \\
+    &= 𝐯₁ + 𝐯₂ + ⋯ + 𝐯ₘ \\
+    &= ∑ᵢ₌₁ᵐ 𝐯ᵢ
+\end{align*}
+Now we show all $𝐯ᵢ = 𝟎$.
+
+WLOG suppose $𝐯₁ ≠ 0$, then $𝐯₁ = -(𝐯₂ + ⋯ + 𝐯ₘ) ≠ 0$.
+
+Now select from the set $\{ 𝐯₂, …, 𝐯ₘ \}$, a subset that form a basis of $W = \span\{𝐯₂, …, 𝐯ₘ\}$. Relabelling as necessary, denote these
+by $\{ 𝐯₂, …, 𝐯ₗ \}$ where $l = \dim(W)$. Each of these $𝐯ᵢ ∈ E_{λᵢ}$ is an eigenvector with eigenvalue $λᵢ$.
+
+Since the eigenvalues are distinct $λ₁ ≠ λᵢ$ for all $1 < i ≤ l$. By the previous result that "distinct eigenvalues produce linearly
+independent eigenvectors", this means that $b₂ = ⋯ = bₗ = 0 ⟹ 𝐯₁ = 𝟎$.
+
+Reapplying the same logic, we prove all $𝐯ᵢ = 𝟎$. This means that
+$$ 𝐯ᵢ = a₁⁽ⁱ⁾ 𝐮₁⁽ⁱ⁾ + ⋯ + a⁽ⁱ⁾_{t₂} 𝐮⁽ⁱ⁾_{t₂} = 𝟎 $$
+Since each $𝐮ⱼ⁽ⁱ⁾$ is linearly independent within $\{ 𝐮₁⁽ⁱ⁾, …, 𝐮⁽ⁱ⁾_{tᵢ} \} ∈ E_{λᵢ}$, this means $a₁⁽ⁱ⁾ = ⋯ = a⁽ⁱ⁾_{t₂} = 0$ for all $i$.
+
+Therefore $S$ is linearly independent.
