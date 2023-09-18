@@ -159,11 +159,11 @@ WLOG suppose $𝐯₁ ≠ 0$, then $𝐯₁ = -(𝐯₂ + ⋯ + 𝐯ₘ) ≠ 0$.
 Now select from the set $\{ 𝐯₂, …, 𝐯ₘ \}$, a subset that form a basis of $W = \span\{𝐯₂, …, 𝐯ₘ\}$. Relabelling as necessary, denote these
 by $\{ 𝐯₂, …, 𝐯ₗ \}$ where $l = \dim(W)$. Each of these $𝐯ᵢ ∈ E_{λᵢ}$ is an eigenvector with eigenvalue $λᵢ$.
 
-Since the eigenvalues are distinct $λ₁ ≠ λᵢ$ for all $1 < i ≤ l$. By the previous result that "distinct eigenvalues produce linearly
+Since the eigenvalues are distinct $λ₁ ≠ λᵢ$ for all $2 ≤ i ≤ l$. By the previous result that "distinct eigenvalues produce linearly
 independent eigenvectors", this means that $b₂ = ⋯ = bₗ = 0 ⟹ 𝐯₁ = 𝟎$.
 
 Reapplying the same logic, we prove all $𝐯ᵢ = 𝟎$. This means that
-$$ 𝐯ᵢ = a₁⁽ⁱ⁾ 𝐮₁⁽ⁱ⁾ + ⋯ + a⁽ⁱ⁾_{t₂} 𝐮⁽ⁱ⁾_{t₂} = 𝟎 $$
-Since each $𝐮ⱼ⁽ⁱ⁾$ is linearly independent within $\{ 𝐮₁⁽ⁱ⁾, …, 𝐮⁽ⁱ⁾_{tᵢ} \} ∈ E_{λᵢ}$, this means $a₁⁽ⁱ⁾ = ⋯ = a⁽ⁱ⁾_{t₂} = 0$ for all $i$.
+$$ 𝐯ᵢ = a₁⁽ⁱ⁾ 𝐮₁⁽ⁱ⁾ + ⋯ + a⁽ⁱ⁾_{tᵢ} 𝐮⁽ⁱ⁾_{tᵢ} = 𝟎 $$
+Since each $𝐮ⱼ⁽ⁱ⁾$ is linearly independent within $\{ 𝐮₁⁽ⁱ⁾, …, 𝐮⁽ⁱ⁾_{tᵢ} \} ∈ E_{λᵢ}$, this means $a₁⁽ⁱ⁾ = ⋯ = a⁽ⁱ⁾_{tᵢ} = 0$ for all $i$.
 
 Therefore $S$ is linearly independent.
