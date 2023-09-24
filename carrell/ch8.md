@@ -279,3 +279,23 @@ since $λᵢ$ are distinct from all $λⱼ$.
 Then by the previous lemma
 $$ V = E_{λ₁}(A) ⊕ ⋯ ⊕ E_{λₘ}(A) $$
 
+# Exercises 8.3
+
+## Ex 8.3.6
+
+Computing the eigenvalues gives 2 distinct real values.
+
+## Ex 8.3.7
+
+Let $λ₁, λ₂$ be the eigenvalues for $A$. Then
+$$ \M{a, b; c, d}\M{x₁; y₁} = λ₁ \M{x₁; y₁} \; \M{a, b; c, d}\M{x₂; y₂} = λ₂ \M{x₂; y₂} $$
+$$ ax₁ + by₁ = λ₁x₁ $$
+$$ ax₂ + by₂ = λ₂x₂ $$
+$(x, yِ)$ is in the first quadrant means $\frac{x}{yِ} > 0$. Likewise $(x, y)$ is in the second/fourth quadrant means $\frac{x}{y} < 0$.
+Rewriting both equations, we get
+$$ \frac{x₁}{y₁} = -\frac{b}{a - λ₁} $$
+$$ \frac{x₂}{y₂} = -\frac{b}{a - λ₂} $$
+Noting that $\Tr(A) = a + d = λ₁ + λ₂$ and $\det(A) = ad - bc = λ₁λ₂$ we see
+$$ \frac{x₁x₂}{y₁y₂} = -\frac{b}{c} < 0 $$
+So one fraction is in the first quadrant, and another in the second.
+
