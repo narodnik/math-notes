@@ -322,15 +322,11 @@ $A = PD₁P⁻¹, B = PD₂P⁻¹ ⟹ AB = PD₁D₂P⁻¹ = PD₂D₁P⁻¹ = B
 
 Let $𝐯 ∈ E_{λ}(A)$, then $BA𝐯 = λB𝐯 = AB𝐯 ⟹ B𝐯 ∈ E_{λ}(A)$.
 
-Our goal is to find a common eigenbasis between $A$ and $B$.
-Since $A$ and $B$ are diagonalizable, they both admit eigenbasis such that
-\begin{align*}
-V   &= E_{μ₁}(B) ⊕ ⋯ ⊕ E_{μₘ}(B) \\
-    &= E_{λ₁}(A) ⊕ ⋯ ⊕ E_{λₗ}(A)
-\end{align*}
-Then there is a $𝐯₁$ in some shared subspace of $E_{μᵢ}$ and $E_{λⱼ}$. Remove this subspace from $V$,
-and repeat the process with $𝐯₂$ in the remaining vectorspace. Iterating we end up with an eigenbasis $𝐯₁, …, 𝐯ₙ$
-for both $A$ and $B$.
+For this question to work, we must have the additional condition that
+$A$ has distinct eigenvalues. Let $\{ 𝐯₁, …, 𝐯ₙ \}$ be an eigenbasis of $A$.
+Then since $B𝐯ᵢ ∈ E_{λᵢ}(A)$ for all $i$, so $\{ B𝐯₁, …, B𝐯ₙ \}$ is an eigenbasis
+of $A$. Additionally since each $E_{λᵢ}(A)$ forms a 1d subspace, it means that
+$B𝐯ᵢ = μᵢ 𝐯ᵢ$ for some $μᵢ$. Thus $\{ B𝐯₁, …, B𝐯ₙ \}$ also forms an eigenbasis for $B$.
 
 ## Ex 8.3.19
 
