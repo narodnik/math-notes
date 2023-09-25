@@ -35,5 +35,8 @@
 * Exercise 8.1.28: (iii) set a = -1, b = -1, c = -2, then det(A) = 4 contradicting the claim that det(A) ≤ 0.
 * Exercise 8.2.9: refers to a strange expression in Section 5.1 but it's not clear what it's referring to.
 * Exercise 8.3.7: should say "first quadrant and another in SECOND quadrant"
+* Exercise 8.3.18: (ii) is incorrect, unless the additional condition is added that: "each matrix has distinct eigenvalues".
+    * https://math.stackexchange.com/questions/891894/if-diagonalizable-matrices-commute-does-it-neccesarily-mean-that-they-can-be-sim and
+    * https://math.stackexchange.com/questions/1930795/showing-that-if-ab-ba-then-a-and-b-are-simultaneously-diagonalizable
 * Exercise 8.3.20: taking Tᵖ to be matrix multiplication, then the supplied claim that μ is linear is easily demonstrated to be false with a counter example. Assuming it is the frobenius on matrix cells, then the question makes little sense since over 𝔽ₚ then μ is simply the identity map.
 
