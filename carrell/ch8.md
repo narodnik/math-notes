@@ -322,12 +322,29 @@ $A = PD₁P⁻¹, B = PD₂P⁻¹ ⟹ AB = PD₁D₂P⁻¹ = PD₂D₁P⁻¹ = B
 
 Let $𝐯 ∈ E_{λ}(A)$, then $BA𝐯 = λB𝐯 = AB𝐯 ⟹ B𝐯 ∈ E_{λ}(A)$.
 
-For this question to work, we must have the additional condition that
-$A$ has distinct eigenvalues. Let $\{ 𝐯₁, …, 𝐯ₙ \}$ be an eigenbasis of $A$.
-Then since $B𝐯ᵢ ∈ E_{λᵢ}(A)$ for all $i$, so $\{ B𝐯₁, …, B𝐯ₙ \}$ is an eigenbasis
-of $A$. Additionally since each $E_{λᵢ}(A)$ forms a 1d subspace, it means that
-$B𝐯ᵢ = μᵢ 𝐯ᵢ$ for some $μᵢ$. Thus $\{ B𝐯₁, …, B𝐯ₙ \}$ also forms an eigenbasis for $B$.
+Our goal is to find a common eigenbasis between $A$ and $B$.
+Since $A$ and $B$ are diagonalizable, they both admit eigenbasis such that
+\begin{align*}
+V   &= E_{λ₁}(A) ⊕ ⋯ ⊕ E_{λₗ}(A) \\
+    &= E_{μ₁}(B) ⊕ ⋯ ⊕ E_{μₘ}(B)
+\end{align*}
+viewing $A, B: V → V$ as linear maps, we can take the restriction of
+$$ B|_{E_{λᵢ}(A)} : E_{λᵢ}(A) → E_{λᵢ}(A) $$
+which is a valid restriction since $B E_{λᵢ}(A) ⊆ E_{λᵢ}(A)$. Now let
+\begin{align*}
+V(λ, μ) &= \{ 𝐯 ∈ E_{λᵢ}(A) | (B - μ)𝐯 = 𝟎 \} \\
+        &= \{ 𝐯 ∈ V | (A - λ)𝐯 = (B - μ)𝐯 = 𝟎 \}
+\end{align*}
+$$ ⟹ E_{λᵢ}(A) = V(λᵢ, μ₁) ⊕ ⋯ ⊕ V(λᵢ, μₘ) $$
+$$ V_{λ, μ ∈ 𝔽} = ⨁ V(λ, μ) $$
+and since $\dim V = n$, we can pick an independent eigenbasis for both $A, B$.
 
 ## Ex 8.3.19
 
-TODO
+$U$ is diagonalizable when the $∑ \dim E_{λᵢ}(U) = n$. Assume WLOG that $λ$ is repeated twice on the diagonal for rows $i, j$,
+then we want that $\dim E_{λ}(U) = 2$. This means the row reduced form of $(U - λI)$, must have zero rows for $i, j$ which is
+the same as saying $\dim (U - λI) = \dim E_λ(U) = 2$.
+
+Based off how row reduction works, see see that all vertical entries above $λ$ should be 0, otherwise $(U - λI)$ has another
+independent row vector.
+
