@@ -348,3 +348,86 @@ the same as saying $\dim (U - λI) = \dim E_λ(U) = 2$.
 Based off how row reduction works, see see that all vertical entries above $λ$ should be 0, otherwise $(U - λI)$ has another
 independent row vector.
 
+# Flag Variety: Triangulation of Operators and Matrices
+
+* Not every matrix is diagonalizable
+* What we prove now is that for any operator on the complex finite dimensional vector space, there exists a basis in which
+  its matrix is upper triangular.
+
+Let $V$ be a finite dimensional vector space.
+
+## Flag
+
+Let $V$ be a finite dimensional vector space. A flag in $V$ is a sequence of nested subspaces
+$$ V₁ ⊂ V₂ ⊂ ⋯ ⊂ Vₙ = V $$
+such that $\dim Vₖ = k$.
+
+A basis $ℬ$ of $V, ℬ = \{ 𝐯₁, …, 𝐯ₙ \}$ is called compatible with a given flag if $V₁ = \span\{ 𝐯₁ \}, …, Vₙ = \{ 𝐯₁, …, 𝐯ₙ \}$.
+
+## $T$-invariant flag
+
+Let $T : V → V$ be a linear operator. We say that a flag is $T$-invariant if $∀k = 1, …, n$, the subspace $Vₖ$ is invariant under $T$
+$$ T(Vₖ) ⊂ Vₖ $$
+
+Let $ℬ = \{ 𝐯₁, …, 𝐯ₙ \}$ be a basis of $V$ compatible with a $T$-invariant flag. What can we say about $T_ℬ$?
+
+$T(𝐯₁) ∈ V₁ ⟹ T(𝐯₁) = a₁₁ 𝐯₁$ by the defn of T-invariance. The first basis vector is therefore an eigenvector for our linear operator $T$.
+
+Continuing we get
+$$ T(𝐯₂) ∈ V₂ ⟹ T(𝐯₂) = a₁₂𝐯₁ + a₂₂𝐯₂ $$
+$$ T(𝐯₃) ∈ V₃ ⟹ T(𝐯₃) = a₁₃𝐯₁ + a₂₃𝐯₂ + a₃₃𝐯₃ $$
+so putting this in a matrix we get
+$$ T_ℬ = \M{
+    a₁₁, a₁₂, a₁₃, ⋯ ;
+    0,   a₂₂, a₂₃, ⋯ ;
+    0,   0,   a₃₃, ⋯ ;
+    0,   0,   0,   ⋯ ;
+    ⋮,   ⋮,   ⋮,
+} $$
+Conclusion: $T_ℬ$ is upper triangular.
+
+## Theorem: Every linear operator $T: V → V$ on a complex finite-dimensional vector space $V$ has an invariant flag
+
+Corollary: for a square complex matrix $A$ there exist an upper-triangular matrix $S$ and an invertible matrix $C$ such that
+$$ A = CSC⁻¹ $$
+
+Proof of corollary: Let $ℬ$ be a basis compatible with an $A$-invariant flag, then we get $A = C^{\mathcal{E}}_ℬ T_ℬ C^ℬ_{\mathcal{E}}$.
+
+Proof by induction on $n = \dim V$: $n = 1$ then $V₁ = V$, then we see $T(V)$ is automatically invariant.
+
+Now assume theorem holds for operators on $(n - 1)$-dimensional vector spaces over $ℂ$.
+We know that any operator on a complex vector space of $\dim n ≥ 1$ has an eigenvector: $T(𝐯) = λ𝐯$.
+
+Set $𝐯₁ = 𝐯$, take $V₁ = \span\{𝐯₁\}$, then since it is an eigenspace, it is invariant and $T(𝐯₁) ⊂ V₁$.
+
+By the 3rd homomorphism theorem, there exists an operator $T'$
+$$ T' : V/V₁ → V/V₁ $$
+such that the following diagram commutes
+\begin{tikzcd}
+    V \arrow[r, "T"] \arrow[d, "P"]
+        & V \arrow[d, "P"] \\
+    V/V₁ \arrow[r, dotted, "T'"]
+        & V/V₁
+\end{tikzcd}
+Now let $W = V/V₁$, then $\dim W = n - 1$. By induction then $T'$ has an invariant flag in $W$.
+Let $\{ 𝐰₁, …, 𝐰ₙ₋₁ \}$ be a basis of $W$, compatible with $T'$-invariant flag.
+Then we can write these in terms of equivalence classes $𝐰₁ = [𝐯₂], …, 𝐰ₙ₋₁ = [𝐯ₙ]$.
+Now we have a basis in the 1-dim space $V₁$, and a basis in the quotient space $W$, and we have the result
+that describes the relation basis in $V$ with the basis of the subspace and the basis of the quotient space.
+
+Then $\{ 𝐯₁, …, 𝐯ₙ \}$ is a basis of $V$, because $𝐯₁$ is a basis in the subspace, and the equivalence classes
+of $𝐯₂, …, 𝐯ₙ$ form a basis of the quotient space $W$.
+
+### Claim: $\{ 𝐯₁, …, 𝐯ₙ \}$ is a basis compatible with a $T$-invariant flag
+
+$$ V₁ = \span\{ 𝐯₁ \}, …, Vₙ = \span\{ 𝐯₁, …, 𝐯ₙ \} $$
+We need to prove $T(𝐯ₖ)$ is a linear combination of $𝐯₁, …, 𝐯ₖ$ for $k = 1, …, n$.
+
+We know this holds for $k = 1$ since $T(𝐯₁) = λ𝐯₁$.
+
+We know $T'([𝐯ₖ])$ is a linear combination of $[𝐯₂], …, [𝐯ₖ]$ since $\{ 𝐰₁, …, 𝐰ₙ₋₁ \}$ form a basis of $W$.
+$$ T'([𝐯ₖ]) = c₂[𝐯₂] + ⋯ + cₖ[𝐯ₖ]$$
+$$ T'([𝐯ₖ]) = [T(𝐯ₖ)] ⟹ [T(𝐯ₖ)] - c₂[𝐯₂] - ⋯ - cₖ[𝐯ₖ] = [T(𝐯ₖ) - c₂𝐯₂ - ⋯ - cₖ𝐯ₖ] = [0] $$
+$$ T(𝐯ₖ) - c₂𝐯₂ - ⋯ - cₖ𝐯ₖ ∈ V₁ ⟹ ∃c₁ ∈ ℂ : T(𝐯ₖ) - c₂𝐯₂ - ⋯ - cₖ𝐯ₖ = c₁𝐯₁ $$
+so we see $T(𝐯ₖ) = c₁𝐯₁ + ⋯ + cₖ𝐯ₖ$.
+
