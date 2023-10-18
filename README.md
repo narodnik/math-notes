@@ -13,3 +13,5 @@ Then you can simply run `mdauto foo.md` and it will auto-update when file change
 
 Check the `pdf` directory for rendered PDFs.
 
+Feel free to contact me: narodnik on Libera IRC in ##math
+
