@@ -431,3 +431,89 @@ $$ T'([𝐯ₖ]) = [T(𝐯ₖ)] ⟹ [T(𝐯ₖ)] - c₂[𝐯₂] - ⋯ - cₖ[�
 $$ T(𝐯ₖ) - c₂𝐯₂ - ⋯ - cₖ𝐯ₖ ∈ V₁ ⟹ ∃c₁ ∈ ℂ : T(𝐯ₖ) - c₂𝐯₂ - ⋯ - cₖ𝐯ₖ = c₁𝐯₁ $$
 so we see $T(𝐯ₖ) = c₁𝐯₁ + ⋯ + cₖ𝐯ₖ$.
 
+# Proof of Cayley-Hamilton
+
+$n = 1$ is trivial, so assume result is true for $n - 1$ given $n > 1$.
+
+$(λ₁, 𝐯₁)$ is an eigenpair for $A$. Extend $𝐯₁$ to a basis $ℬ$ of $V$. Then $A$ is similar to $B = ℳ ^ℬ_ℬ (T_A)$ and
+$p_A(x) = p_B(x)$.
+$$ B = \M{
+    λ₁, *, ⋯, *;
+    0,   ,  ,  ;
+    ⋮,   , B₁, ;
+    0,   ,   ,
+} $$
+
+Now we note the eigenvalues of $B₁$ are in $𝔽$ since
+\begin{align*}
+p_A(x) &= p_B(x) \\
+    &= \det(B - xIₙ) \\
+    &= (λ₁ - x)\det(B₁ - xIₙ₋₁) \\
+    &= (λ₁ - x) p_{B₁}(x)
+\end{align*}
+and we see they are the eigenvalues $\{ λ₂, …, λₙ \}$ of $B$.
+
+We equivalently calculate whether $p_B(B) = O ⟹ p_A(A) = O$.
+We first note a general fact about matrices
+$$ \M{
+    c₁, *, ⋯, *;
+    0,   ,  ,  ;
+    ⋮,   , C₁, ;
+    0,   ,   ,
+} \M{
+    c₂, *, ⋯, *;
+    0,   ,  ,  ;
+    ⋮,   , C₂, ;
+    0,   ,   ,
+} = \M{
+    c₁c₂, *, ⋯, *;
+    0,     ,  ,  ;
+    ⋮,     , C₁C₂, ;
+    0,     ,  ,
+} $$
+
+We now wish to calculate $p_B(B)$ by lifting $p_B(x)$ with the map
+$$ 𝜙 : 𝔽[x] → 𝔽[B] $$
+\begin{align*}
+𝜙(p_B(x)) &= 𝜙((-1)ⁿ(x - λ₁)⋯(x - λₙ)) \\
+    &= (-1)ⁿ(B - λ₁Iₙ)p_{B₁}(B₁) \\
+    &= (-1)ⁿ \M{
+    0, *, ⋯, *;
+    0,  ,  ,  ;
+    ⋮,  , B₁ - λ₁Iₙ₋₁, ;
+    0,  ,  ,
+} \M{
+    *, *, ⋯, *;
+    0,  ,  ,  ;
+    ⋮,  , p_{B₁}(B₁),  ;
+    0,  ,  ,
+} \\
+    &= (-1)ⁿ \M{
+    0, *, ⋯, *;
+    0,  ,  ,  ;
+    ⋮,  , B₁ - λ₁Iₙ₋₁, ;
+    0,  ,  ,
+} \M{
+    *, *, ⋯, *;
+    0,  ,  ,  ;
+    ⋮,  , O,  ;
+    0,  ,  ,
+} \\
+    &= O
+\end{align*}
+since $p_{B₁}(B₁) = O$ by the induction hypothesis.
+
+# Exercises 8.4
+
+## Ex 8.4.3
+
+## Ex 8.4.4
+
+## Ex 8.4.5
+
+## Ex 8.4.6
+
+## Ex 8.4.7
+
+## Ex 8.4.12
+
