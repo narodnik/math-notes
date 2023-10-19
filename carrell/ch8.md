@@ -507,13 +507,67 @@ since $p_{B₁}(B₁) = O$ by the induction hypothesis.
 
 ## Ex 8.4.3
 
+*False proof of Cayley-Hamilton: $p_A(A) = \det(A - A) = 0$*
+
 ## Ex 8.4.4
+
+$$ A = \M{a, b; c, d} $$
+$A$ is nilpotent means $A² = O$, so $A² - \Tr(A)A + \det(A)I = O ⟹ \det(A)I = \Tr(A)A$.
+
+```python
+sage: var("a b c d")
+(a, b, c, d)
+sage: A = matrix([[a, b], [c, d]])
+sage: C = (-A.trace()*A + A.det()*matrix.identity(2))
+sage: e1 = C[0][0].expand() == 0
+sage: e2 = C[0][1].expand() == 0
+sage: e3 = C[1][0].expand() == 0
+sage: e4 = C[1][1].expand() == 0
+sage: e1
+-a^2 - b*c == 0
+sage: e2
+-a*b - b*d == 0
+sage: e3
+-a*c - c*d == 0
+sage: e4
+-b*c - d^2 == 0
+sage: e1 - e4
+-a^2 + d^2 == 0
+sage: # so a = +/-d
+sage: e2 + b*d
+-a*b == b*d
+sage: # => a = -d
+sage: e1.subs({-a^2: -a*(-d)})
+-b*c + a*d == 0
+sage: # so det(A) == 0
+sage: # and since a = -d => a + d = Tr(A) == 0
+```
 
 ## Ex 8.4.5
 
+$Aᵏ = O$ and let $(λ, 𝐯)$ be an eigenpair for $A$, then $Aᵏ𝐯 = λᵏ𝐯 = 0 ⟹ λ = 0$.
+
+And if all eigenvalues are 0, then $p(x) = xⁿ ⟹ p(A) = Aⁿ = O$.
+
 ## Ex 8.4.6
+
+Assume $A = PDP⁻¹$ is diagonalizable, then $Aᵏ = PDᵏP⁻¹ = O ⟹ D = O$ and so $A = O$.
 
 ## Ex 8.4.7
 
+$Aᵏ = O ⟺ Aⁿ𝔽ⁿ = \{ 𝟎 \}$ so $\dim 𝒩 (A) > 0$.
+Let $𝐮₁, …, 𝐮ₛ$ be a basis of $𝒩 (A)$ and extend it to a basis of $\col(A)$, then we see
+$$ 𝔽ⁿ = 𝐮₁ ⊕ ⋯ ⊕ 𝐮ₛ ⊕ 𝐰₁ ⊕ ⋯ ⊕ 𝐰ₜ $$
+now let $k$ be minimal such that $Aᵏ = O$ and $k > n$, then we have a chain
+$$ Aᵏ𝔽ⁿ = \{ 0 \} ⊂ ⋯ ⊂ A𝔽ⁿ ⊂ 𝔽ⁿ $$
+with
+$$ \dim Aᵏ𝔽ⁿ = 0 < ⋯ < \dim A𝔽ⁿ \dim 𝔽ⁿ = n $$
+viewing $T_A(𝐯) = A𝐯$, we see $\dim A𝔽ⁿ = \dim T_A = \rank(A)$.
+
+But there are $n$ maximum steps, so $k < n$.
+
 ## Ex 8.4.12
+
+$A$ forms a 1d vector space over $𝔽^{n×n}$, so if $A² ∉ \span\{A\}$ then $\{A, A²\}$ are independent and so on.
+So $T⁰, …, Tᵏ⁻¹$ are independent. Also we can just view powers of $T$ as a basis for a subspace in $ℒ(V, V)$.
 
