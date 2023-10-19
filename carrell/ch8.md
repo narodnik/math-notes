@@ -571,3 +571,6 @@ But there are $n$ maximum steps, so $k < n$.
 $A$ forms a 1d vector space over $𝔽^{n×n}$, so if $A² ∉ \span\{A\}$ then $\{A, A²\}$ are independent and so on.
 So $T⁰, …, Tᵏ⁻¹$ are independent. Also we can just view powers of $T$ as a basis for a subspace in $ℒ(V, V)$.
 
+Note that $ℒ(V, W) = (\dim V)(\dim W)$ although we only use the weaker property that $ℒ(V, V)$ is finite dimension
+given that $V$ is finite dimension.
+
