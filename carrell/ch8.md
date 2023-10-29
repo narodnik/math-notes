@@ -574,3 +574,64 @@ So $T⁰, …, Tᵏ⁻¹$ are independent. Also we can just view powers of $T$ a
 Note that $ℒ(V, W) = (\dim V)(\dim W)$ although we only use the weaker property that $ℒ(V, V)$ is finite dimension
 given that $V$ is finite dimension.
 
+## Ex 8.5.2
+
+*Proposition 8.22. A linear mapping $T : V → V$ is self-adjoint iff its matrix with respect to an arbitrary
+orthonormal basis of $V$ is symmetric.*
+
+$$ ⟨𝐱, A𝐲⟩ = ⟨A𝐱, 𝐲⟩ = ⟨𝐱, Aᵀ𝐲⟩ $$
+Then using the orthonormal basis $𝐮₁, …, 𝐮ₙ$ we see
+$$ A𝐮ⱼ = a₁ⱼ𝐮₁ + ⋯ + aₙⱼ𝐮ₙ $$
+$$ Aᵀ𝐮ⱼ = b₁ⱼ𝐮₁ + ⋯ + bₙⱼ𝐮ₙ $$
+And then evaluating $⟨𝐮ᵢ, A𝐮ⱼ⟩ = ⟨𝐮ⱼ, Aᵀ𝐮ⱼ⟩$, we see $A = Aᵀ$.
+
+## Ex 8.5.6
+
+$$ W = \span\{ 𝐮₁, 𝐮₂ \} \; 𝐮₃ ∈ W^⟂ \; Pᵢ = 𝐮ᵢ𝐮ᵢᵀ $$
+$$ B = λ₁P₁ + λ₂P₂ + λ₃P₃ \textrm{ where } λ₃ = \det(B) / (λ₁λ₂) $$
+
+## Ex 8.5.7
+
+Product of symmetric matrices is only symmetric when $AB = BA$ since $AB = AᵀBᵀ = (BA)ᵀ$.
+
+Rearrange $A$ and $B$ to get $D = QᵀAQ = RᵀBR$ so $A = QRᵀBRQᵀ = (QRᵀ)B(QRᵀ)ᵀ$ so is true.
+
+## Ex 8.5.8
+
+Let $(λ₁, 𝐯₁)$ and $(λ₂, 𝐯₂)$ be eigenpairs of $A$. Since $\det(A) = 0$, one of the eigenvalues
+of $A$ is 0. Because $𝐯₁, 𝐯₂$ lie in the image of $T_A$, so $λ₁, λ₂ ≠ 0$ and $λ₃ = 0$. So we see
+$$ A = λ₁P₁ + λ₂P₂ $$
+Making $𝐯₁, 𝐯₂$ into orthonormal vectors and constructing $P₁, P₂$, we see that
+$$ \Tr(A) = λ₁ + λ₂ = 2λ₁ + 3λ₂ = 4 $$
+then we get $λ₁ = λ₂$
+$$ A = \M{ 1, 0, 1; 0, 2, 0; 1, 0, 1 } \; λ₁ = λ₂ = 2 \; λ₃ = 0 \; 𝐯₃ = \M{1, 0, -1}ᵀ $$
+
+## Ex 8.5.11
+
+$$ W = \span\{𝐰₁, …, 𝐰ₛ\} \; W^⟂ = \span\{ 𝐯₁, …, 𝐯ₜ \} $$
+with $s + t = n$ and $P_W = 𝐰₁𝐰₁ᵀ + ⋯ + 𝐰ₛ𝐰ₛᵀ$ where all $𝐰ᵢ, 𝐯ᵢ$ are normal.
+Then $Q = \M{𝐰₁, ⋯, 𝐰ₛ, 𝐯₁, ⋯, 𝐯ₜ}, D₁ = \diag(\underbrace{1, …, 1}_s, \underbrace{0, …, 0}_t)$
+and $D₂ = \diag(\underbrace{0, …, 0}_s, \underbrace{1, …, 1}_t)$.
+Then $P_W = QD₁Qᵀ, P_{W^⟂} = QD₂Qᵀ$.
+
+## Ex 8.5.12
+
+$\det(A) = λ₁λ₂λ₃, \Tr(A) = λ₁ + λ₂ + λ₃ = λ₃ ⟹ λ₁ = -λ₂$ so $λ₁λ₂ < 0$.
+Since $λ₃ ∈ ℝ$ so $λ₃² > 0$ or $\det(A)\Tr(A) = λ₁λ₂λ₃² < 0$.
+
+## Ex 8.5.13
+
+For (i), factor the determinant and notice that $Tr(A)$ is a term, so $\det(A) = 0$.
+
+The eigenvalues for $A$ are $0, \Tr(A)$. The eigenvector for $λ₁ = \Tr(A)$ is $\M{1,1,1}ᵀ$
+and the rest is easy.
+
+## Ex 8.5.23
+
+$$ \det(R - xI) = (x - \cos(θ))² + \sin²(θ) ⟹ λ = \cos(θ) ± i\sin(θ) $$
+
+## Ex 8.5.26 (ii)
+
+$$ ⟨U𝐯, U𝐯⟩ = ⟨λ𝐯, λ𝐯⟩ = ⟨𝐯, UᴴU𝐯⟩ = ⟨𝐯, 𝐯⟩ ⟹ |λ| = 1 $$
+so since $\det(U) = 1$, either $λ₁ = λ₂ = 1$ or $λ₁ = λ₂ = -1$.
+
