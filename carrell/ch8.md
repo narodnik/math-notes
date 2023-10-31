@@ -503,6 +503,51 @@ $$ 𝜙 : 𝔽[x] → 𝔽[B] $$
 \end{align*}
 since $p_{B₁}(B₁) = O$ by the induction hypothesis.
 
+# Hermitian Principal Axis Theorem (also called Spectral Theorem)
+
+## $V = \ker(T) ⊕ \im(T)$
+
+We prove $\im(T) ⊂ \ker(T)^⟂$. Let $𝐰 ∈ \ker(T)$ and $T(𝐱) ∈ \im(T)$ then
+$$ ⟨𝐰, T(𝐱)⟩ = ⟨T(𝐰), 𝐱⟩ = 𝟎 $$
+so $T(x) ∈ \ker(T)^⟂$ which means $\im(T) ⊂ \ker(T)^⟂$.
+
+Lets note two theorems. The first concerns a subspace and its orthogonal complement,
+$V = W ⊕ W^⟂$.
+Secondly the rank-nullity theorem
+$\dim V = \dim \ker(T) + \dim \im(T)$.
+
+Now apply both theorems to get
+\begin{align*}
+\dim V &= \dim \ker(T) + \dim \ker(T)^⟂ \\
+    &= \dim \ker(T) + \dim \im(T)
+\end{align*}
+$$ ⟹ \dim \ker(T)^⟂ = \dim \im(T) $$
+and since $\im(T) ⊂ \ker(T)^⟂$ so
+$$ \ker(T)^⟂  = \im(T) $$
+
+## Principal Axis Theorem: Orthonormal Basis of $V$ from Eigenvectors of $T$
+
+Assume true for $n - 1$, let $\dim V = n$.
+Let $λ ∈ ℝ$ and $S = T - λI$.
+
+If $V = \ker(S)$ then we are done, so assume $V ≠ \ker(S)$.
+
+$S$ is self-adjoint since
+\begin{align*}
+⟨S(𝐯₁), 𝐯₂⟩ &= ⟨T𝐯₁ - λ𝐯₁, 𝐯₂⟩ \\
+    &= ⟨T𝐯₁, 𝐯₂⟩ - λ⟨𝐯₁, 𝐯₂⟩ \\
+    &= ⟨𝐯₁, T𝐯₂⟩ - ⟨𝐯₁, λ𝐯₂⟩ \\
+    &= ⟨𝐯₁, S(𝐯₂)⟩
+\end{align*}
+so from the previous proposition we see
+$$ V = \ker(S) ⊕ \im(S) $$
+
+Observe that $T(\ker(S)) ⊂ \ker(S)$ and $T(\im(S)) ⊂ \im(S)$ so we can construct restrictions
+of $T$ to both of these subspaces.
+
+Since $0 < \dim \ker(S) ≤ n - 1$ and $0 < \dim \im(S) ≤ n - 1$ we can apply the induction
+to both of these subspaces.
+
 # Exercises 8.4
 
 ## Ex 8.4.3
