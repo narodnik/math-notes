@@ -548,6 +548,32 @@ of $T$ to both of these subspaces.
 Since $0 < \dim \ker(S) ≤ n - 1$ and $0 < \dim \im(S) ≤ n - 1$ we can apply the induction
 to both of these subspaces.
 
+# Formula for $P_λ$ when $A$ is Symmetric (Alternative)
+
+This is similar to the lagrange interpolation trick.
+$$ P_λ = ∏_{μ ≠ λ} \frac{A - μI}{λ - μ} $$
+
+Let the eigenpairs be $(λ, 𝐯_λ)$ and $(μ, 𝐯_μ)$. Applying $P_λ$ we see
+\begin{align*}
+P_λ(𝐯_λ) &= ∏_{μ ≠ λ} \frac{A𝐯_λ - μ𝐯_λ}{λ - μ} \\
+    &= ∏_{μ ≠ λ} \frac{(λ - μ)𝐯_λ}{λ - μ} \\
+    &= 𝐯_λ
+\end{align*}
+\begin{align*}
+P_λ(𝐯_μ) &= ∏_{μ ≠ λ} \frac{A𝐯_μ - μ𝐯_μ}{λ - μ} \\
+    &= ∏_{μ ≠ λ} \frac{(μ - μ)𝐯_λ}{λ - μ} \\
+    &= 𝟎
+\end{align*}
+Therefore we get that $P_λ² = P_λ$ by the above identities.
+
+Then also for any two distinct eigenvalues we have $P_λ P_μ = P_μ P_λ = O$.
+
+Lastly since $A = Aᵀ$ is symmetric, it follows from our definition that $P_λ = P_λᵀ$.
+
+The formula given in the book when we have the orthonomal eigenvector $𝐮_λ$ is simply
+$P_λ = 𝐮_λ 𝐮_λᵀ$ which is obtained by examining the formula
+$P_λ(𝐯) = ⟨𝐮_λ, 𝐯⟩ 𝐮_λ = 𝐮_λ (𝐮_λᵀ 𝐯) = (𝐮_λ 𝐮_λᵀ) 𝐯$.
+
 # Exercises 8.4
 
 ## Ex 8.4.3
