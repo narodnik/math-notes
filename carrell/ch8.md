@@ -722,3 +722,27 @@ Now let $𝐯₁ ∈ E_{λ₁}$ and $𝐯₂ ∈ E_{λ₂}$ where $λ₁ ≠ λ�
 $$ ⟹ (λ₁ - λ₂)⟨𝐯₁, 𝐯₂⟩ = 0 $$
 but $λ₁ ≠ λ₂$ so $⟨𝐯₁, 𝐯₂⟩ = 0$.
 
+# Field Extensions
+
+## $\dim V/W = \deg(f)$
+
+$W = ⟨f(x)⟩$ and let $h(α) = a₀ + a₁α + ⋯ + aₖαᵏ = \bar{𝟎}$
+where $k = \deg(f) - 1$. This means that $h(x) ∈ W$.
+But since $h = gf$ for some $g ∈ K[x] ⟹ g = 0$.
+So $\{ 1, α, …, αᵏ \}$ are independent.
+
+To show that $\{ 1, α, …, αᵏ \}$ span, for any $g ∈ K[x]$,
+then by the division algo $g = qf + r$ and $\deg(r) < \deg(f)$.
+Then $\bar{r} ∈ \span\{ 1, …, αᵏ \}$.
+
+## $V/W$ is a field
+
+Let $f$ be irreducible.
+
+If $\bar{g} ≠ \bar{0}$ and since $f$ is irreducible,
+then $f$ and $g$ share no common factor. There are $a, b ∈ K[x]$
+such that
+$$ af + bg = 1 $$
+$$ ⟹ \bar{b} \bar{g} ≡ \bar{1} \pmod{f} $$
+since $\overline{bg} = \bar{b} \bar{g}$.
+
