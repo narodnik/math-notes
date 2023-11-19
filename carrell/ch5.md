@@ -267,3 +267,6 @@ Let $B = (A \leftsquigarrow^i \vec{a}_j)$ be the matrix, where we replace column
 So finally we have proved the relation and hence the inverse of $A$ by
 $$ \det(A)I = \adj(A)A $$
 
+# Exercise 5.1.5
+
+Put $B, C$ in $LPDU$ form, then observe that the determinant is $\det(B)\det(C)$ by looking at the composition of diagonals.
