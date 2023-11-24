@@ -35,4 +35,5 @@
 * Exercise 8.2.9: refers to a strange expression in Section 5.1 but it's not clear what it's referring to.
 * Exercise 8.3.7: should say "first quadrant and another in SECOND quadrant"
 * Exercise 8.3.20: taking Tᵖ to be matrix multiplication, then the supplied claim that μ is linear is easily demonstrated to be false with a counter example. Assuming it is the frobenius on matrix cells, then the question makes little sense since over 𝔽ₚ then μ is simply the identity map.
+* Exercise 9.1.14: (i) requires knowledge of Fuglede's theorem to solve which is not provided in the text.
 
