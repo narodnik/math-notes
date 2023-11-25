@@ -63,6 +63,11 @@ Let $x = a₁ + ib₁, y = a₂ + ib₂$, then let $N(x) = N(y) = 1$. We see
 $$ N(x + y) = (a₁ + b₁)² + (a₂ + b₂)² ≤ a₁² + b₁² + a₂² + b₂² = N(x) + N(y) $$
 $$ ⟹ |Tr(U)| ≤ n $$
 
+## 9.1.11
+
+$QQᵀ = I ⟹ \det(Q) = ±1$. But $\det(Q) = λ₁ ⋯ λₙ$ with all $λᵢ$ imaginary.
+Therefore the eigenvalues are in conjugate pairs $±iμₖ$ and $n$ is even.
+
 ## 9.1.14/15
 
 Needs Fuglede's theorem since $AB = BA$ and $AᴴBᴴ = BᴴAᴴ$ does not imply
