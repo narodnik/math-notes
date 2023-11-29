@@ -38,4 +38,5 @@
 * Exercise 9.1.14: (i) requires knowledge of Fuglede's theorem to solve which is not provided in the text.
 * Proposition 9.7: the proof incorrectly states A = CᵀBCᵀ
 * Section 9.2.4: the sentence before Proposition 9.9 references the same proposition, but should instead say Proposition 9.8
+* Exercise 9.2.11: states Aᵏ = M, but should be A = Mᵏ.
 

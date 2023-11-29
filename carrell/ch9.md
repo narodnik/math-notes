@@ -81,3 +81,29 @@ $D₁ + D₂$.
 
 (iii) $AAᵀ = UD₁Uᵀ = (AᵀA)ᵀ = (UD₂Uᵀ)ᵀ ⟹ D₁ = D₂$.
 
+## 9.2.10 (vi)
+
+Using $B = CACᵀ$ and $A = Aᵀ$, we get $AB = ACACᵀ = BA = CACᵀA ⟹ AB = (AB)ᵀ$.
+So $AB$ must be symmetric, which is not always true.
+
+## 9.2.11
+
+$A = QDQᵀ$ with $D = \diag\{d₁, …, dₙ\}$ all nonnegative. Therefore we can take
+any arbitrary $k$th root $K$ in $ℝ^{n×n}$. Let $M = QKQᵀ$, then we see $A = Mᵏ$.
+
+## 9.2.12
+
+Let $U ⊂ V$ be the subspace spanned by $B$.
+Since $A$ is symmetric diagonalizable, it is a semisimple linear mapping.
+Since it is positive definite with only positive eigenvalues, therefore the
+span of $A$ is $V ⟹ \span{B} ⊂ \span{A}$.
+
+Let $\{ 𝐯₁, …, 𝐯ₙ \}$ be an eigenbasis for $A$. When $B𝐯₁ = 𝟎$, then
+$𝐯₂ᵀAB𝐯₁ = 𝟎$. But $(𝐯₂ᵀAB𝐯₁)ᵀ = λ𝐯₁ᵀB𝐯₂$ where $λ$ is an eigenvalue of
+$B𝐯₂$. Since $B$ is symmetric, we have $𝐯₁ᵀBᵀ = 𝐯₁ᵀB = 𝟎 ⟹ 𝐯₁ᵀAB𝐯₂ = 𝟎$.
+
+Now assume $B𝐯₁, B𝐯₂ ≠ 0$. Let $λ$ be the eigenvalue of $B𝐯₂$,
+then we see that $𝐯₁ᵀAB𝐯₂ = λ𝐯₁ᵀB𝐯₂ = λ(𝐯₁ᵀB𝐯₂)ᵀ = λ𝐯₂ᵀB𝐯₁ > 0$.
+
+We conclude that $QABQ⁻¹$ is symmetric where $Q = \M{𝐯₁, …, 𝐯ₙ}$.
+
