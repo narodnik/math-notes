@@ -22,6 +22,47 @@ header-includes: |
     - \DeclareMathOperator\diag{diag}
 ---
 
+# Normal Matrix Theorem
+
+A matrix $A ∈ ℂ^{n×n}$ is unitarily diagonalizable iff $A$ is normal.
+
+# Principal Axis Theorem
+
+Complex matrix $A$ is Hermitian iff $A$ can be unitarily diagonalized
+as $A = UDUᴴ$.
+
+# Diagonalization of Quadratic Forms
+
+We can diagonalize a form $q(r₁, …, rₙ)$ and through a change of coordinates of the
+form $𝐫 = C𝐬$, construct a new form $q'(s₁, …, sₙ) = ∑ aᵢsᵢ²$.
+
+# Equivalent Conditions for Positive Definite Form
+
+Let $A$ be a real symmetric matrix.
+
+## (i) eigenvalues of $A$ are positive $⟹$ (ii) $A$ is positive definite
+
+$A = QDQᵀ$ with all eigenvalues from $D = \diag(λ₁, …, λₙ)$ positive.
+
+Since $Q$ is an orthogonal basis, $𝐱 = x₁𝐪₁ + ⋯ + xₙ𝐪ₙ$, so $𝐱ᵀA𝐱 = ∑ λᵢxᵢ² > 0$
+for all $𝐱 ≠ 𝟎$.
+
+## (ii) $A$ is positive definite $⟹$ (iii) upper left $k×k$ submatrix $Aₖ$ has $\det(Aₖ) > 0 \;  ∀ k$
+
+We can view vectors in $ℝᵏ$ as vectors in $ℝⁿ$ but with the upper values set to 0
+$$ ℝᵏ = \{ 𝐱 ∈ ℝⁿ | xᵢ = 0 \; ∀ i > k \} $$
+Since $A$ is positive definite, so is $Aₖ$, which means all eigenvalues are positive,
+and so $\det(Aₖ) > 0$.
+
+## (iii) $\det(Aₖ) > 0 \; ∀ k ⟹$ (iv) $A = LDLᵀ$ with all $dᵢ > 0$ for $D = \diag(d₁, …, dₙ)$
+
+Immediate from prop 4.17: *$A$ can be written in the form $LDU$ iff $Aₖ$ is invertible
+for all $k = 1, …, n$.*
+
+## (iv) $A = LDLᵀ$ with all $dᵢ > 0 ⟹$ (i) eigenvalues of $A$ are positive
+
+From Sylvester's law of inertia.
+
 # Exercises
 
 ## 9.1.6
@@ -38,7 +79,7 @@ $\det(S) ≥ 0$.
 
 ## 9.1.7
 
-Write $A$ in unitary diagonal form, then note $D = \diag\{λ₁, …, λₙ\}$.
+Write $A$ in unitary diagonal form, then note $D = \diag(λ₁, …, λₙ)$.
 Since $\det(A) = \det(D)$ and the eigenvalues of a Hermitian matrix are
 real so $\det(A) ∈ ℝ$.
 
