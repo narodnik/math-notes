@@ -63,6 +63,12 @@ for all $k = 1, …, n$.*
 
 From Sylvester's law of inertia.
 
+# Sylvester's Law of Inertia
+
+Let $A$ and $B$ be congruent real symmetric matrices. Then they have the
+same signature- number of positive, zero and negative eigenvalues.
+Likewise real symmetric matrices with the same signature are congruent.
+
 # Exercises
 
 ## 9.1.6
