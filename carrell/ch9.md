@@ -63,11 +63,30 @@ for all $k = 1, …, n$.*
 
 From Sylvester's law of inertia.
 
+# Positive Semidefinite Forms
+
+## Real Symmetric Matrix is Positive Semidefinite iff $A = LDLᵀ$ with $D$ Nonnegative
+
+$A$ can be decomposed as $LPDLᵀ$ where $L$ is orthogonal, and since $A = Aᵀ$, so
+$PD$ is symmetric. Then we see $P = I$, and $D$ entries are nonnegative.
+
 # Sylvester's Law of Inertia
 
 Let $A$ and $B$ be congruent real symmetric matrices. Then they have the
 same signature- number of positive, zero and negative eigenvalues.
 Likewise real symmetric matrices with the same signature are congruent.
+
+* We easily see $n₀(A) = n₀(B)$ since they share the same null space.
+* When diagonalizing real symmetric matrices, there's multiple ways to order the
+  diagonal, so we reorder it so the positive ones are first.
+* Now we only have to look at $D$, $E$ diagonal matrices since $A$ and $B$ are
+  congruent to them.
+* We assume $n₊(D) < n₊(E)$
+* $fⱼ(x₁, …, xₜ)$ is a linear function in $t$ variables.
+  For $j = 1, …, s$ we can pick $𝐚 = \M{a₁, ⋯, aₜ}$ so that all $fⱼ(𝐚) = 0$.
+    * To see this, simply make $F ∈ ℝ^{s×t}$ be the matrix with the coeffs of $f₁, …, fₛ$
+      as its rows and $𝐚 ∈ ℝᵗ$. We see the null space of $F$ is nonzero
+      since $s < t$.
 
 # Exercises
 
@@ -78,7 +97,7 @@ has only imaginary eigenvalues. Write $\det(A) = iⁿ λ₁ ⋯ λₙ$
 where $λᵢ$ are the eigenvalues of $iA$.
 
 By this result, if $A$ is skew-symmetric, then $\det(S) = 0$ since
-$\det(S)$ is pure imginary.
+$\det(S)$ is pure imaginary.
 
 For $n$ even, the eigenvalues occur in pairs $±iλₖ$, which means
 $\det(S) ≥ 0$.
