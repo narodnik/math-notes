@@ -2,6 +2,7 @@
 header-includes: |
     - \DeclareDifferential{\odif}{\mathrm{d}}
     - \DeclareMathOperator\div{div}
+    - \DeclareMathOperator\ord{ord}
     - \let\dd\odif
 ---
 
@@ -29,19 +30,13 @@ sage: dr.divisor()
 
 which shows us $\div(\dd r) = -2(0 : 1 : 0)$.
 
+The book is wrong. We must find a local parameter/uniformizer, and write the
+differential as $α(t) \dd t$, then evaluate $\ord_P(α(t))$.
+
 ## Set $z = 1$
 
-$$ r² - s = 0 ⟹  \dd r = \frac{1}{2r} \dd s $$
-We note that $\pdv{f}{r}(P) = 2r$ so $s$ is not a local parameter for
-$P = (0,0)$. However $r$ is a local parameter for all points.
-
-Since $\div(\frac{1}{2r}) = -\div(2r)$, we can look
-at this divisor to find points of $\div(\dd r)$.
-\begin{align*}
-I((0,0), V(r² - s), V(r)) &= I((0,0), V(s), V(r)) \\
-    &= 1
-\end{align*}
-so $\div(\frac{1}{2r}) = -(0:0:1)$.
+The curve is given by $r² - s = 0$ but there are no poles or zeros in this
+patch.
 
 ## Set $y = 1$
 
@@ -66,6 +61,8 @@ by substituting $\dd t$ for $\dd u$. Doing the opposite, we get
     &= \left(\frac{1}{2tu} - \frac{t}{u²}\right) \dd u \\
     &= \frac{u - 2t²}{2tu²} \dd u \\
     &= \frac{-1}{2t³} \dd u \\
+    &= \frac{-1}{2t³} \dd (t²) \\
+    &= \frac{-1}{t²} \dd t \\
 \end{align*}
 
 While if we use $\frac{1}{2r}\dd s$, we get
@@ -74,11 +71,12 @@ While if we use $\frac{1}{2r}\dd s$, we get
     &= \frac{u}{2t} \dd (\frac{1}{u}) \\
     &= -\frac{u}{2tu²} \dd u \\
     &= -\frac{1}{2t³} \dd u \\
+    &= -\frac{1}{t²} \dd (t²) \\
 \end{align*}
-which agrees with the previous calculation.
+so all calculations agree.
 
-$$ \div\left(\frac{-1}{2t³}\right) = -3\div(-2t) $$
-and so $\div(\frac{-1}{2t³}) = -3(0 : 1 : 0)$.
+$$ \div\left(\frac{-1}{t²}\right) = -2\div(-t) = -2\div(t) $$
+and so $\div(\frac{-1}{t²}) = -2(0 : 1 : 0)$.
 
 ## Set $z = 1$
 
@@ -88,7 +86,7 @@ $w = 0$, however no such point exists. Likewise for $v$, so we can
 consider both of these coordinates as local.
 
 Observe that $r = \frac{1}{w}$ and $s = \frac{v}{w}$.
-Using $\dd r$ we get $\dd r = \frac{1}{w²} dw$.
+Using $\dd r$ we get $\dd r = -\frac{1}{w²} dw$.
 
 While if we use $\frac{1}{2r}\dd s$, we get
 \begin{align*}
@@ -102,4 +100,5 @@ While if we use $\frac{1}{2r}\dd s$, we get
     &= \frac{w}{2} \frac{-2v}{w²} \dd w \\
     &= \frac{-1}{w²} \dd w \\
 \end{align*}
+There is no $w = 0$ on this patch however.
 
