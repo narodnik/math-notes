@@ -33,6 +33,11 @@ which shows us $\div(\dd r) = -2(0 : 1 : 0)$.
 The book is wrong. We must find a local parameter/uniformizer, and write the
 differential as $α(t) \dd t$, then evaluate $\ord_P(α(t))$.
 
+* [Canonical divisor of the projective line](https://math.stackexchange.com/questions/2162564/canonical-divisor-of-the-projective-line)
+* [Compute principal divisor for a rational function on a curve](https://math.stackexchange.com/questions/907546/compute-principal-divisor-for-a-rational-function-on-a-curve)
+* [Calculating the divisors of the coordinate functions on an elliptic curve](https://math.stackexchange.com/questions/511950/calculating-the-divisors-of-the-coordinate-functions-on-an-elliptic-curve?noredirect=1&lq=1)
+* [An exposition of Riemann Roch theorem for curves](https://math.uchicago.edu/~may/REU2016/REUPapers/Wynter.pdf)
+
 ## Set $z = 1$
 
 The curve is given by $r² - s = 0$ but there are no poles or zeros in this
