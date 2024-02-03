@@ -86,7 +86,7 @@
       </p>
     </li>
 
-    <li>
+    <li id="Ex03">
       <p>
 	Suppose a &isin; &lt;b&gt;. Then &lt;a&gt; = &lt;b&gt; iff
 	ord(a) = ord(b).
@@ -120,7 +120,7 @@
       </p>
     </li>
 
-    <li>
+    <li id="Ex04">
       <p>
 	Let ord(a) = n, and let b = a<sup>k</sup>. Then &lt;a&gt; = &lt;b&gt;
 	iff n and k are relatively prime.
@@ -148,7 +148,19 @@
       </p>
 
       <p>
-	The same as the previous exercise.
+  <span class="Case">If</span>
+	We're given ord(b<sup>k</sup>) but not ord(b). Let ord(b) = m. By <a href="Chapter10G#Ex05">Chapter 10, Exercise G5</a>, ord(b<sup>k</sup>) = m / gcd(k, m).
+  Thus, we want the smallest m that satisfies m = n * gcd(k, m).
+  (From Chapter 10, Exercise H5, m = nk/l where l is relatively prime with n, so k/l = gcd(k, m).)
+  From the above equation, m must be a (positive) multiple of n. Start with the smallest
+  such multiple, m = n. Indeed, n = n * gcd(k, n) since k and n are relatively prime.
+  Thus, ord(b) = m = n = ord(b<sup>k</sup>), so &lt;b&gt; = &lt;b<sup>k</sup>&gt; = &lt;a&gt; by <a href="#Ex03">Exercise 3</a>.
+      </p>
+
+      <p>
+  <span class="Case">Only If</span>
+  &lt;a&gt; = &lt;b<sup>k</sup>&gt; = &lt;b&gt; implies k is relatively prime with ord(b) by <a href="#Ex04">Exercise 4</a>.
+  But ord(b) = ord(b<sup>k</sup>) by <a href="#Ex03">Exercise 3</a>, so k is relatively prime with ord(b) = ord(b<sup>k</sup>) = ord(a) = n.
       </p>
     </li>
 
