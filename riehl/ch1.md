@@ -19,7 +19,7 @@ Our aim is to show this endomorphism is not natural.
 
 Clearly for $α : 1_\Ab ⟹  1_\Ab$, this $n = 1$.
 
-Observe that homomorphisms $ℤ \xrightarrow{a} A$ correspond bijectively
+Observe that homomorphisms $ℤ \→{a} A$ correspond bijectively
 to elements $a ∈ A$ by $1 → a$.
 
 We have the following diagram, noting that since $α$ is supposed to be natural,
@@ -95,7 +95,9 @@ A \arrow{r}{α_A} & A
 We see that $𝜙(A) = (0, ℤ) ⟹  n = ±1$. Likewise $𝜙(B) = (0, 0) ⟹  n = 0_{ℤ/2nℤ}$
 but $n ≠ 0 ∈ ℤ/2nℤ$ which is a contradiction.
 
-# 1.4.ii: Natural Transform between Parallel Functors in $\catname{B}A$
+# Ex
+
+## 1.4.ii: Natural Transform between Parallel Functors in $\catname{B}A$
 
 We view the group $A$ as a category with one object $s_A$ with the Hom-set
 $\End(s_A) = A$ and composition by the group law. Likewise for $B$.
@@ -113,4 +115,63 @@ Noting that since $B$ is a group there exists $α_{s_A}⁻¹$, we can
 rewrite (2) as
 $$ G(h) = α_{s_A} F(h) α_{s_A}⁻¹ $$
 That is that the group elements $G(h), F(h) ∈ B$ are conjugates of each other.
+
+## 1.4.v: Comma Category Natural Transform $α : F \dom ⟹  G \cod$
+
+### Comma Category
+
+\begin{tikzcd}
+d  \arrow{r} \arrow{d}{h} & Fd  \arrow{r}{f} \arrow{d}{Fh} & Ge  \arrow{d}{Gk} & e  \arrow{l} \arrow{d}{k} \\
+d' \arrow{r}              & Fd' \arrow{r}{f}               & Ge'               & e' \arrow{l} \\
+D                         & C                              & C                 & E
+\end{tikzcd}
+$$ f : Fd → Ge ∈ C $$
+Comma category $F↓G$:
+
+* objects $(d, e, f)$
+* morphisms $(d, e, f) → (d', e', f')$
+
+$$ \dom: F↓G → D $$
+$$ \cod: F↓G → E $$
+
+### Globular Diagram
+
+\begin{tikzcd}
+F↓G \arrow{r}{\cod} \arrow{d}{\dom}       & E \arrow{d}{G} \\
+D   \arrow{r}{F} \ar[ur, "α", Rightarrow] & C
+\end{tikzcd}
+$$ α : F \dom ⟹  G \cod $$
+$$ F \dom : F↓G \→{\dom} D \→{F} C $$
+$$ G \cod : F↓G \→{\cod} E \→{G} C $$
+\begin{tikzcd}[column sep=1.5cm]
+F↓G
+  \ar[r, bend left=40, "F \dom", ""{name=fdom, above,}]
+  \ar[r, bend right=40, swap, "G \cod", ""{name=gcod, below,}]
+  \ar[from=fdom, to=gcod, Rightarrow, "α"]
+& C
+\end{tikzcd}
+
+## Natural Transformation $α : F \dom ⟹  G \cod$
+
+$$ F \dom, G \cod : F↓G \rightrightarrows C $$
+
+$$ α : F \dom ⟹  G \cod $$
+Data of natural transform is:
+
+For each $(d, e, f) ∈ F↓G$,
+$$ α_{(d, e, f)} : F \dom(d, e, f) → G \cod(d, e, f) ∈ C $$
+
+Let
+$$ z : (d, e, f) → (d', e', f') ∈ F↓G $$
+\begin{tikzcd}
+F \dom(d, e, f)    \arrow{r}{α_{(d, e, f)}} \arrow[swap]{d}{F \dom z} & G \cod(d, e, f) \arrow{d}{G \cod z} \\
+F \dom(d', e', f') \arrow{r}{α_{(d', e', f')}} & G \cod(d', e', f')
+\end{tikzcd}
+which is equivalent to
+\begin{tikzcd}
+Fd  \arrow{r}{α_{(d, e, f)}} \arrow[swap]{d}{Fh} & Ge \arrow{d}{Gk} \\
+Fd' \arrow{r}{α_{(d', e', f')}} & Ge'
+\end{tikzcd}
+so we can take $α_{(d, e, f)} : F \dom(d, e, f) = Fd → G \cod(d, e, f) = Ge ∈ C$
+to be $α_{(d, e, f)} = f : Fd → Ge ∈ G$ which commutes as expected.
 
