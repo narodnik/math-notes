@@ -94,3 +94,23 @@ A \arrow{r}{α_A} & A
 
 We see that $𝜙(A) = (0, ℤ) ⟹  n = ±1$. Likewise $𝜙(B) = (0, 0) ⟹  n = 0_{ℤ/2nℤ}$
 but $n ≠ 0 ∈ ℤ/2nℤ$ which is a contradiction.
+
+# 1.4.ii: Natural Transform between Parallel Functors in $\catname{B}A$
+
+We view the group $A$ as a category with one object $s_A$ with the Hom-set
+$\End(s_A) = A$ and composition by the group law. Likewise for $B$.
+
+If $F, G: A → B$ are functors, then they both consist of the following data:
+$F(s_A) = s_B$ and for all $g₁, g₂ ∈ \End(s_A), F(g₁)F(g₂) = F(g₁g₂) ∈ \End(s_B)$
+(likewise for $G$).
+
+A natural transformation $α : F ⟹  G$ consists of the following data:
+
+1. $α_{s_A} ∈ \End(s_B) = B$
+2. For all $h ∈ \End(s_A) = A$, we have $G(h) α_{s_A} = α_{s_A} F(h)$.
+
+Noting that since $B$ is a group there exists $α_{s_A}⁻¹$, we can
+rewrite (2) as
+$$ G(h) = α_{s_A} F(h) α_{s_A}⁻¹ $$
+That is that the group elements $G(h), F(h) ∈ B$ are conjugates of each other.
+
