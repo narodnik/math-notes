@@ -380,11 +380,6 @@ $\Hom(Fc, Fc) = \Hom(d, d) = \Hom(d', d')$ which means $d = d'$ since they
 share the same identity arrow.
 
 Continuing,
-
-\begin{tikzcd}
-    A & B \ar{r}{g} & C \ar{r}{h} & D \ar[ll,bend right, shift right,"h"]
-\end{tikzcd}
-
 \begin{tikzcd}
 d \ar{d}{h} & Gd  = c  \ar{r}{F} & Fc \ar[d, dotted, "FGh"] \ar[ll, bend right, shift right, "β"] \\
 d' \ar[rr, bend right, shift right, "β⁻¹"] & Gd' = c' \ar{r}{F} & Fc'
