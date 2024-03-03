@@ -175,3 +175,337 @@ Fd' \arrow{r}{α_{(d', e', f')}} & Ge'
 so we can take $α_{(d, e, f)} : F \dom(d, e, f) = Fd → G \cod(d, e, f) = Ge ∈ C$
 to be $α_{(d, e, f)} = f : Fd → Ge ∈ G$ which commutes as expected.
 
+# Categorification of the Orbit-Stabilizer Theorem
+
+> The orbit of $x$ is "everything that can be reached from $x$ by an action of something in $G$".
+> 
+> The stabilizer of $x$ is "the set of all elements of $G$ which don't move $x$ when they act on $x$".
+
+The left $G$-set for a set $S$ is $X = \{ g·s | g ∈ S, s ∈ S \}$.
+Let $X : \catname{B}G → \Set$ be such a left $G$-set.
+The translation groupoid (action groupoid in other sources)
+$\catname{T}_G X$ has elements of the set $X$ as objects.
+
+For example let $R × Kⁿ → Ax ∈ Kⁿ$ where $R$ is the group of $π/2$
+rotation matrices be such a left $G$-set.
+Then $\catname{B}G$ has a single object $s$ and morphisms
+$I, G, G², G³$ where $R = ⟨G⟩$.
+
+Then $X : \catname{B}G → \Set$ is a functor taking $s$ to the left $G$-set
+and the same morphisms as before.
+
+$$ G = \left\{ I = \M{0, 1; 1, 0}, G = \M{0, -1; 1, 0}, G² = \M{-1, 0; 0, -1}, G³ = \M{0, 1; -1, 0} \right\} $$
+
+Applying this group to the vector $𝐮 = \M{1; 0}$, we get the left $G$-set
+$$ X_𝐮 : s → \left\{ \M{1; 0}, \M{0; 1}, \M{-1; 0}, \M{0; -1} \right\} $$
+And applying it to $𝐯 = \M{1; 1}$ we get
+$$ X_𝐯 : s → \left\{ \M{1; 1}, \M{-1; 1}, \M{-1; -1}, \M{1; -1} \right\} $$
+
+The **translation groupoid** for these sets consists of the following diagrams
+\begin{tikzcd}
+\M{1; 0} \arrow{rd}{G²} \arrow{r}{G} \arrow[swap]{d}{G} & \M{0; 1} \arrow{ld}{G²} \arrow{d}{G} \\
+\M{0; -1} & \arrow{l}{G} \M{-1; 0}
+\end{tikzcd}
+\begin{tikzcd}
+\M{1; 1} \arrow{rd}{G²} \arrow{r}{G} \arrow[swap]{d}{G} & \M{-1; 1} \arrow{ld}{G²} \arrow{d}{G} \\
+\M{-1; -1} & \arrow{l}{G} \M{1; -1}
+\end{tikzcd}
+(including the inverses $G⁻¹ = G³$ and $(G²)⁻¹ = G²$)
+
+Morphisms $g : x → y$ are elements of $g ∈ G$ such that $g · x = y$.
+
+The orbit $Oₓ = \{ g·x | g ∈ G \}$.
+There are two orbits which we can observe from the diagrams. They are
+$$ O_𝐮 = \{ 𝐮, G𝐮, G²𝐮, G³𝐮 \} $$
+$$ O_𝐯 = \{ 𝐯, G𝐯, G²𝐯, G³𝐯 \} $$
+We can pick one of these diagrams to form the skeleton $\catname{skT}_G X$
+which is equivalent to any of these orbit partitions.
+
+Take an $x ∈ X$ as a representative of its orbit $Oₓ$. Then by the previous
+section's mentioned equivalency of categories $\catname{skC} ↪ \catname{C}$
+we must have
+$$ \Hom_{\catname{skT}_G X}(Oₓ, O_y) ≌ \Hom_{\catname{T}_G X}(x, x) = Gₓ $$
+These are the automorphisms of $x$, the $g ∈ G$ such that $g·x = x$.
+$Gₓ$ is the stabilizer of $x$ with respect to $G$.
+
+The **skeleton** of the translation groupoid $\catname{skT}_G X$ is
+simply the two objects $O_𝐮, O_𝐯$ with no arrows between them.
+They are discrete, and there's no morphisms between the objects.
+
+This argument implies any pair of elements in the same orbit, must have
+isomorphic stabilizers.
+
+The skeleton of the translation groupoid, as a category, is the disjoint
+union of the stabilizer groups, indexed by the orbits $Oₓ$. In our example,
+the stabilizer groups are trivial.
+
+The set of morphisms for the translation groupoid with domain $x$ is
+isomorphic to $G$. That is $\Hom_{\catname{T}_G X}(x, y)$ for all $y ∈ Oₓ$.
+Each of these hom-sets is isomorphic to $\Hom_{\catname{T}_G X}(x, x) = Gₓ$.
+
+$$ |G| = |Oₓ| |Gₓ| $$
+
+## $D₄$
+
+\begin{align*}
+G &= \{ a, b : a⁴ = e, b² = e, bab⁻¹ = a⁻¹ \} \\
+  &= \{ e, a, a², a³, b, ab, a²b, a³b \}
+\end{align*}
+Let our set $X$ be the verices of a square
+$$ X = \{ 1, 2, 3, 4 \} $$
+The orbit of each vertex $x$ is the entire group since vertices can
+be sent to any other vertex through rotations,
+$$ Oₓ = \{ 1, 2, 3, 4 \} $$
+The stabilizer for 3 is
+$$ G₃ = \{ e, b \} $$
+
+We now formalize this as per above.
+
+$$ X : \catname{B}G → \catname{Set} $$
+$$ X(s) = \{ 1, 2, 3, 4 \} $$
+with $X$ mapping morphisms identically. We now prove $X$ is functorial.
+Let $g : s → s$ define an arrow in $\catname{B}G$. Define the morphism
+$F(g) : \{ 1, 2, 3, 4 \} → \{ 1, 2, 3, 4 \}$ by $F(g)(s) = m·s$. Then
+\begin{align*}
+X(g₁ ∘ g₂)(s) &= (m₁ m₂)·s \\
+    &= m₁ · (m₂ · s) \\
+    &= X(m₁)(X(m₂)(s)) \\
+    &= (X(m₁) ∘ X(m₂))(s)
+\end{align*}
+
+![](d4.png)
+![](d4-tgx.png)
+
+*The entire group, and its skeletal translation groupoid.*
+
+The translation groupoid is the dihedral group applied to all sets $S$ where
+$|S| = 4$. Which is an infinite collection of discrete identical graphs.
+
+Each node has exactly 2 automorphisms:
+
+```py
+1 ()
+2 ()
+3 ()
+4 ()
+1 (2,4)
+3 (2,4)
+2 (1,3)
+4 (1,3)
+```
+Which are the stabilizers.
+All elements in the same orbit thus have isomorphic stabilizers.
+
+The disjoint union of the stabilizer groups is:
+$$ \{ (O₁, \{e, b\}), (O₃, \{e, b\}), (O₂, \{e, a²b\}), (O₄, \{e, a²b\}) \} $$
+The set of morphisms with domain $x$ is isomorphic to $G$.
+
+Another way of looking at it is the disjoint union of hom-sets
+$\Hom_{\catname{T}_G X}(x, y)$ for $y ∈ Oₓ$ where each set is isomorphic
+to $\Hom_{\catname{T}_G X}(x, x) = Gₓ$.
+
+$$ |G| = |Oₓ| |Gₓ| $$
+
+# Full, Faithful and Essentially Surjective $⟺$ Equivalent Categories
+
+Fully faithful functors are bijective on hom-sets. For example given the
+category with objects $c, c'$, then we expect a bijection for
+$\Hom(c, c), \Hom(c', c')$ and $\Hom(c, c')$.
+
+## Equivalent Category is Essentially Surjective
+
+Suppose $F : C → D, G : D → C, α : 1_C ≌ GF, β : FG ⟹  1_D$ defines an
+equivalence of categories.
+
+Pick any $d ∈ D$. Then we have that $Gd ∈ C$. This object is isomorphic to $d$
+since
+$$ β_d FGd = d $$
+
+## Equivalent Category is Faithful
+
+\begin{tikzcd}
+c \arrow{r}{F} \arrow{d}{f \textrm{ or } g} & Fc \arrow{r}{G} \arrow{d}{Ff = Fg} & GFc \arrow{r}{α⁻¹} \arrow{d}{GFf = GFg} & c \arrow{d}{f = g} \\
+c' \arrow{r}{F} & Fc' \arrow{r}{G} & GFc' \arrow{r}{α⁻¹} & c'
+\end{tikzcd}
+
+We can simplify this argument using the lemma.
+
+\begin{tikzcd}
+c \arrow{r}{≌} \arrow{d}{f \textrm{ or } g} & GFc \arrow{d}{GFf = GFg} \\
+c' \arrow{r}{≌} & GFc'
+\end{tikzcd}
+with the isomorphisms determining a unique morphism $f' : c → c' ⟹  f = g$.
+
+## Equivalent Category is Full
+
+Let $k : Fc → Fc'$, then $Gk : GFc → GFc'$
+\begin{tikzcd}
+GFc \arrow{r}{≌} \arrow{d}{Gk} & c \ar[d, dotted, "h"] \\
+GFc' \arrow{r}{≌} & c'
+\end{tikzcd}
+induces a unique map $h: c → c'$ such that
+$$ Gk = GFh ⟹  k = Fh $$
+by faithfulness of $G$.
+
+## Fully Faithful and Essentially Surjective defines an Equivalent Category
+
+### $β : FG ⟹  1_D$
+
+Essentially surjective means $∀d ∈ D, ∃c ∈ C : Fc ≌ d$.
+
+\begin{tikzcd}
+c \arrow{r}{F} & Fc \ar[r, dotted, "h"] & d \\
+\end{tikzcd}
+
+Take any $d ∈ D$, there is a
+$$ β_{Fc}(Fc) = d $$
+We will construct *maps* $G$ and $β$. Set
+$$ Gd := c $$
+$$ βFc := d $$
+we now have
+$$ G = \M{
+     , d, d',;
+    ⋯, , , ⋯   ;
+     , c, c', 
+} $$
+$$ β = \M{
+     , Fc, Fc',;
+    ⋯, , , ⋯   ;
+     , d, d', 
+} $$
+these maps are well-formed since for distinct $d ≠ d'$, we must have
+$c ≠ c'$ otherwise $Fc = Fc' ⟹  d = d'$ which is a contradiction.
+Likewise if $Fc = Fc'$, then the bijectivity of hom-sets means that
+$\Hom(Fc, Fc) = \Hom(d, d) = \Hom(d', d')$ which means $d = d'$ since they
+share the same identity arrow.
+
+Continuing,
+
+\begin{tikzcd}
+    A & B \ar{r}{g} & C \ar{r}{h} & D \ar[ll,bend right, shift right,"h"]
+\end{tikzcd}
+
+\begin{tikzcd}
+d \ar{d}{h} & Gd  = c  \ar{r}{F} & Fc \ar[d, dotted, "FGh"] \ar[ll, bend right, shift right, "β"] \\
+d' \ar[rr, bend right, shift right, "β⁻¹"] & Gd' = c' \ar{r}{F} & Fc'
+\end{tikzcd}
+where we construct $FGh : FGd → FGd'$ by
+$$ FGh = β⁻¹hβ $$
+
+Since $F$ is fully faithful, the map
+$$ \Hom(Gd, Gd') → Hom(FGd, FGd') $$
+is bijective.
+
+which allows us to induce the map $Gh : Gd → Gd'$
+\begin{tikzcd}
+Gd \ar{r}{F} \ar[d, dotted, "Gh"] & FGd \ar{d}{FGh} \\
+Gd' \ar{r}{F} & FGd'
+\end{tikzcd}
+thus
+$$ β : FG ⟹  1_D $$
+since
+\begin{tikzcd}
+FGd \ar{r}{β_d} \ar[d, dotted, "FGh"] & d \ar{d}{h} \\
+FGd' \ar{r}{β_{d'}} & d'
+\end{tikzcd}
+commutes, so $β$ is a natural transformation.
+
+### Exercise 1.5.iv: Fully Faithful Functors Reflects and Creates Isomorphisms
+
+Let $F : C → D$ be a fully faithful functor.
+
+#### $Ff ∈ D$ is an Isomorphism $⟹$ $f ∈ C$ is an Isomorphism
+
+Let $Fh : Fc' → Fc ∈ D$ such that $Fh · Ff = 1_{Fc}$ and $Ff · Fh = 1_{Fc'}$.
+
+Since $F$ is fully faithful, there is a preimage $h : c' → c$, then we see
+that $FgFf = 1_{Fc} = F1_C = F(gf) ⟹  1_C = gf$ (and vice-versa) so $f$ is
+also an isomorphism.
+
+#### $Fx ≌ Fy ∈ D ⟹  x ≌ y ∈ C$
+
+$f : Fx → Fy, g: Fy → Fx ∈ D : gf = 1_{Fx}$, but by fully faithful $F$
+there are $h, k$ such that $hk = 1_x$ and $kh = 1_y ⟹  x ≌ y$.
+
+### $α : 1_C ⟹  GF$
+
+By (ii) above, if $Fα = β⁻¹$ is isomorphic, then so is $α$.
+
+We know $β : FG ⟹  1_D$ is an isomorphism, so we have
+$$ β_d : FGd → d $$
+since $β$ is isomorphic, we also have
+$$ β_d⁻¹ : d → FGd $$
+since $F$ is essentially surjective, $∃c ∈ C$, such that $d = Fc$ so we have
+$$ β_{Fc}⁻¹ : Fc → FGFc $$
+since $F$ is fully faithful, set $Fα_c = β_{Fc}⁻¹$ which gives a unique
+$$ α_c : c → GFc $$
+
+To show $α$ is a natural transformation, we must show this diagram commutes
+\begin{tikzcd}
+c \ar{r}{α_c} \ar{d}{f} & GFc \ar{d}{GFf} \\
+c' \ar{r}{α_{c'}} & GFc'
+\end{tikzcd}
+
+Now we know that $β$ is a natural transformation and hence this diagram
+commutes,
+\begin{tikzcd}
+FGd \ar{r}{β_d} \ar{d}{FGh} & d \ar{d}{h} \\
+FGd' \ar{r}{β_{d'}} & c'
+\end{tikzcd}
+since $d = Fc$, we have
+\begin{tikzcd}
+Fc  \ar{r}{Fα_c} \ar{d}{Ff} & FGFc  \ar{r}{β_{Fc}} \ar{d}{FGFf} & Fc \ar{d}{Ff} \\
+Fc' \ar{r}{Fα_{c'}}         & FGFc' \ar{r}{β_{Fc'}}             & Fc'
+\end{tikzcd}
+our aim is to show the left square commutes, since then
+$$ FGFf ∘ Fα_c = Fα_c ∘ Ff ⟹  F(GFf ∘ α_c) = F(α_{c'} ∘ f) $$
+which by the faithfulness of $F$ means
+$$ GFf ∘ α_c = α_{c'} ∘ f $$
+
+Notice in the diagram that the outer box commutes since $Fα_c = β_{Fc}⁻¹$ so
+$β_{Fc} Fα_c = 1_{Fc}$ and likewise for $c'$ so that
+$$ Ff β_{Fc} Fα_c = β_{Fc'} Fα_{c'} Ff $$
+
+Likewise since $β$ is a natural transformation, the right hand square commutes.
+
+We see the following equivalent sequence of moves
+$$ RRD = RDR = DRR $$
+since $β$ is invertible, we can right cancel $R$ from $RDR = DRR$ giving
+us $RD = DR$
+$$ FGFf ∘ Fα_c = Fα_{c'} ∘ Ff $$
+as desired.
+
+### Show $G$ is Functorial
+
+Let $Gd ∈ C$, show that $FG1_d = F1_{Gd}$
+\begin{tikzcd}[column sep=huge]
+FGd \ar{r}{β_d} \ar[swap]{d}{FG1_d \textrm{ or } F1_{Gd}} & d \ar{d}{1_d} \\
+FGd \ar{r}{β_d}                                     & d
+\end{tikzcd}
+the diagram commutes for both $FG1_d$ and $F1_{Gd}$, but $F$ is faithful
+so
+$$ 1_d ∘ β_d = FG1_d = F1_{Gd} ⟹  G1_d = 1_{Gd} $$
+
+Then for $h∘h'$
+\begin{tikzcd}[column sep=large]
+  \ar{r}{β} \ar[swap]{d}{FG(h·h') \textrm{ or } FGh ∘ FGh'} &   \ar{d}{h·h'} \\
+  \ar{r}{β} & \;
+\end{tikzcd}
+use the same trick as above.
+
+Thus $G$ is functorial.
+
+# Ex 1.6
+
+## 1.6.iv
+
+Let $U : \Ring → \Grp$ be the forgetful functor. Forgetful functors are
+always fully faithful.
+
+From the Wiki article on epimorphism, we have:
+
+* Every epimorphism in $\Grp$ is surjective.
+* The inclusion map $ι : ℤ ↪  ℚ$ is a non-surjective epimorphism.
+
+If $ι$ is non-surjective, then we would expect $Uι$ to remain non-surjective.
+
