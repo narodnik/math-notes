@@ -503,4 +503,3 @@ From the Wiki article on epimorphism, we have:
 * The inclusion map $ι : ℤ ↪  ℚ$ is a non-surjective epimorphism.
 
 If $ι$ is non-surjective, then we would expect $Uι$ to remain non-surjective.
-
