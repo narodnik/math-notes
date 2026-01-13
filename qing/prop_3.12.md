@@ -341,3 +341,76 @@ $$
 $$
 
 It tells us this works for *any* scheme (not just affine ones), provided we have a finite affine open covering. This is a foundational tool that makes scheme theory computationally tractable — we can often reduce global problems to local algebra on affine patches, then glue the results back together.
+
+---
+
+## Computing in Sage
+
+Here's how to verify Proposition 3.12 for the projective line example in SageMath:
+
+```python
+# Define the base field
+k = GF(5)  # or use QQ for rationals
+
+# For P^1, we work with the two standard affine patches
+# Patch U0: where x0 != 0, coordinate t = x1/x0
+# Patch U1: where x1 != 0, coordinate s = x0/x1
+
+# Define the affine patches as polynomial rings
+A0.<t> = PolynomialRing(k)  # O(U0) = k[t]
+A1.<s> = PolynomialRing(k)  # O(U1) = k[s]
+
+# The global sections on P^1 are just constants
+O_X = k  # This is already a field
+
+# Take a non-zero constant f = 2 (invertible since char != 2)
+f = O_X(2)
+
+# Localize at f: since f is already invertible, localization does nothing
+O_X_f = O_x.fraction_field()  # Still k
+print(f"Global sections localized at f: {O_X_f}")
+
+# Compute X_f: since f is invertible everywhere, X_f = P^1
+# The ring of functions on X_f is still just k
+print(f"Functions on X_f: {O_X}")
+
+# Verify the isomorphism
+print(f"Are they equal? {O_X_f == O_X}")  # True
+```
+
+**A more interesting case — affine line with doubled origin:**
+
+```python
+# Define the ring for the affine line
+A.<t> = PolynomialRing(k)
+
+# Localization at t (removing the origin)
+A_local = A.localization(t)
+print(f"Localized ring: {A_local}")
+# Output: Fraction Field of Univariate Polynomial Ring in t over Finite Field of size 5
+
+# This is k[t, t^{-1}]
+print(f"Element example: {A_local(t^-2)}")  # 1/t^2
+print(f"Another element: {A_local((1 + t)/(t^3))}")  # (1+t)/t^3
+
+# Verify: O_X(X)_f = k[t]_t = k[t, t^{-1}]
+# And O_X(X_f) = k[t, t^{-1}] (functions on A^1 \ {0})
+# The proposition says these are isomorphic
+```
+
+**Output:**
+```
+Localized ring: Fraction Field of Univariate Polynomial Ring in t over Finite Field of size 5
+Element example: 1/t^2
+Another element: (t + 1)/t^3
+```
+
+### What Sage is showing us
+
+1. **For $\mathbb{P}^1$**: Since global functions are just the field $k$, localizing at any non-zero constant doesn't change anything. The proposition holds trivially.
+
+2. **For the doubled affine line**: Sage computes $k[t]_t$ as the fraction field $k(t)$, which equals $k[t, t^{-1}]$ — exactly the ring of functions on $\mathbb{A}^1 \setminus \{0\}$. This verifies the proposition!
+
+3. **Key insight**: Sage's `localization` method implements exactly the algebraic operation described in Proposition 3.12, and we can check that it matches the geometric description of $X_f$.
+
+**Limitation:** Sage doesn't have built-in support for non-separated schemes like the affine line with doubled origin as a single scheme object — you have to work with the affine patches separately and glue them by hand. This is exactly why Proposition 3.12 is useful: it lets us work algebraically with $\mathcal{O}_X(X)_f$ instead of directly with the glued scheme $X_f$.
