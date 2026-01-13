@@ -221,9 +221,10 @@ $$
 $$
 
 We have:
-- $\mathcal{O}_X(U_0) = k[t]$ where $t = x_1/x_0$
-- $\mathcal{O}_X(U_1) = k[s]$ where $s = x_0/x_1$
-- $\mathcal{O}_X(U_0 \cap U_1) = k[t, t^{-1}] \cong k[s, s^{-1}]$ with $s = t^{-1}$
+
+* $\mathcal{O}_X(U_0) = k[t]$ where $t = x_1/x_0$
+* $\mathcal{O}_X(U_1) = k[s]$ where $s = x_0/x_1$
+* $\mathcal{O}_X(U_0 \cap U_1) = k[t, t^{-1}] \cong k[s, s^{-1}]$ with $s = t^{-1}$
 
 ### Choosing a global section
 
@@ -231,7 +232,8 @@ Let $f = x_0 \in H^0(\mathbb{P}^1, \mathcal{O}(1))$. However, this is a section 
 Instead, let's work with $f \in \mathcal{O}_X(X) = k$ (the only global functions are constants).
 
 Take $f = 2 \in k$ (assuming $\text{char}(k) \neq 2$). Then:
-- $X_f = \{p \in \mathbb{P}^1 \mid f_p \text{ is a unit in } \mathcal{O}_{X,p}\} = \mathbb{P}^1$ (since $2$ is invertible in $k$)
+
+* $X_f = \{p \in \mathbb{P}^1 \mid f_p \text{ is a unit in } \mathcal{O}_{X,p}\} = \mathbb{P}^1$ (since $2$ is invertible in $k$)
 
 The proposition gives:
 $$
@@ -251,9 +253,22 @@ Now consider $f$ defined as $x$ on $U_0 = \text{Spec}(A)$ and $1$ on $U_1 = \tex
 
 Let $X$ be the affine line with doubled origin. Let $A = k[t]$, and let $X = \text{Spec}(A) \cup_{\text{Spec}(A[t^{-1}])} \text{Spec}(A)$.
 
+**Construction:** We take two copies of $\mathbb{A}^1 = \text{Spec}(k[t])$ and glue them along the open subset $\text{Spec}(k[t, t^{-1}]) = \mathbb{A}^1 \setminus \{0\}$. This means the origins are **not** identified — we have two distinct points $0_1$ and $0_2$.
+
 Take $f = t \in A$. Then:
-- $X_f = D(t)$ in both copies of $\text{Spec}(A)$, which are identified
-- $X_f = \mathbb{A}^1_k \setminus \{0\}$
+
+* $X_f = D(t)$ in both copies of $\text{Spec}(A)$, which are identified
+* $X_f = \mathbb{A}^1_k \setminus \{0\}$
+
+**Why the origin is removed from both copies:**
+
+The stalk at the origin in either copy is $\mathcal{O}_{X,0_i} = k[t]_{(t)}$ — the ring of rational functions where the denominator doesn't vanish at $t=0$. In this stalk, $t$ is **not** a unit because:
+$$
+t \cdot \left(\frac{a}{b}\right) = 1 \implies ta = b
+$$
+But if $a, b \in k[t]$ with $b(0) \neq 0$, then $ta(0) = 0 \neq b(0)$. So $t$ cannot be inverted in the stalk.
+
+Therefore $0_1$ and $0_2$ are both **not** in $X_f$, since $f = t$ fails to be a unit in both stalks. Geometrically, $X_f$ consists of both copies of $\mathbb{A}^1$ with their origins removed, glued along the overlap — which gives us back $\mathbb{A}^1 \setminus \{0\}$.
 
 The proposition gives:
 $$
@@ -263,8 +278,9 @@ $$
 ### Verification
 
 On $X_f = \mathbb{A}^1_k \setminus \{0\} = \text{Spec}(k[t, t^{-1}])$:
-- $\mathcal{O}_X(X_f) = k[t, t^{-1}]$
-- $\mathcal{O}_X(X)_f = k[t]_t = k[t, t^{-1}]$
+
+* $\mathcal{O}_X(X_f) = k[t, t^{-1}]$
+* $\mathcal{O}_X(X)_f = k[t]_t = k[t, t^{-1}]$
 
 The isomorphism is indeed $\frac{p(t)}{t^n} \mapsto \frac{p(t)}{t^n}$.
 
