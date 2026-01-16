@@ -5,11 +5,10 @@ Let $A$ be a commutative ring and $f \in A$. The localization $A_f = A[T]/(fT - 
 **Universal Property:** Let $\varphi : A \to B$ be a ring homomorphism such that $\varphi(f)$ is a unit in $B$. Then there exists a unique ring homomorphism $\tilde{\varphi} : A_f \to B$ making the following diagram commute:
 
 $$
-\begin{array}{ccc}
-A & \xrightarrow{\varphi} & B \\
-\downarrow & \nearrow \tilde{\varphi} & \\
-A_f & &
-\end{array}
+\begin{tikzcd}
+A \arrow[r, "\ell"] \arrow[dr, "f"'] & S^{-1}A \arrow[d, dashed, "\exists!\,\tilde f"] \\
+& B
+\end{tikzcd}
 $$
 
 Explicitly, $\tilde{\varphi}$ is given by $\tilde{\varphi}(a/f^n) = \varphi(a) \cdot \varphi(f)^{-n}$.
@@ -38,7 +37,7 @@ Equivalently, $\varphi : A \to B$ is flat if the functor $B \otimes_A \square : 
 
 **Example:** The localization homomorphism $A \to S^{-1}A$ is flat (Corollary 1.2.11).
 
-# Lemma 2.10
+# Lemma 1.2.10
 
 Let $A$ be a ring, $S$ a multiplicative subset of $A$, and $M$ an $A$-module. There exists a canonical isomorphism of $S^{-1}A$-modules:
 $$
@@ -98,11 +97,204 @@ On overlaps $V_i \cap V_j$, we have $\alpha(V_i \cap V_j)(s_i|_{V_i \cap V_j} - 
 
 If each $\alpha(U)$ for $U \in \mathcal{B}$ is injective and $s \in \mathcal{F}(V)$ satisfies $\alpha(V)(s) = 0$, then for any $U \in \mathcal{B}$ with $U \subseteq V$, we have $\alpha(U)(s|_U) = 0$. By injectivity of $\alpha(U)$, $s|_U = 0$. Since $\mathcal{B}$ is a basis, this implies $s = 0$ in $\mathcal{F}(V)$ (a section that vanishes on a basis must be zero by the sheaf property).
 
+# Lemma 2.9
+
+Let $\mathcal{F}$ be a sheaf on $X$. Let $s, t \in \mathcal{F}(X)$ be sections such that
+$s_x = t_x$ for every $x \in X$. Then $s = t$.
+
+**Proof.** We may assume that $t = 0$. For every $x \in X$, there exists an open
+neighborhood $U_x$ of $x$ such that $s|_{U_x} = 0$, because $s_x = 0$. As the $U_x$ cover $X$
+when $x$ varies, we indeed have $s = 0$.
+
+# Proposition 2.12
+
+Let $\alpha : \mathcal{F} \to \mathcal{G}$ be a morphism of sheaves on $X$. Then $\alpha$ is
+an isomorphism if and only if $\alpha_x$ is an isomorphism for every $x \in X$.
+
+**Proof.** Suppose that $\alpha_x$ is an isomorphism for every $x \in X$. Let us show that
+$\alpha$ is an isomorphism (the converse is trivial). Let $s \in \mathcal{F}(U)$ be a section. If
+$\alpha(U)(s) = 0$, then for every $x \in U$, we have $\alpha_x(s_x) = (\alpha(U)(s))_x = 0$. It follows
+that $s_x = 0$ for every $x \in U$. Hence $s = 0$ (Lemma 2.9) and $\alpha$ is injective. Next,
+let $t \in \mathcal{G}(U)$. Then we can find a covering of $U$ by open sets $U_i$ and sections
+$s_i \in \mathcal{F}(U_i)$ such that $\alpha(U_i)(s_i) = t|_{U_i}$. As we have just seen that $\alpha$ is injective,
+$s_i$ and $s_j$ coincide on $U_i \cap U_j$. The $s_i$ therefore glue to a section $s \in \mathcal{F}(U)$ (i.e.,
+$s|_{U_i} = s_i$). By construction, $\alpha(U)(s)$ and $t$ coincide on every $U_i$, and are therefore
+equal. This proves that $\alpha(U)$ is surjective.
+
+# Topological Open Immersion
+
+**Definition 2.22.** Let $(f, f^\#) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be a morphism of ringed spaces. We say that:
+
+* $(f, f^\#)$ is an **open immersion** if:
+  1. $f : X \to Y$ is a topological open immersion (i.e., $f$ is a homeomorphism of $X$ onto an open subset $V \subseteq Y$)
+  2. For every $x \in X$, the stalk map $f^\#_x : \mathcal{O}_{Y,f(x)} \to \mathcal{O}_{X,x}$ is an isomorphism
+
+* $(f, f^\#)$ is a **closed immersion** if:
+  1. $f : X \to Y$ is a topological closed immersion (i.e., $f$ is a homeomorphism of $X$ onto a closed subset $V \subseteq Y$)
+  2. For every $x \in X$, the stalk map $f^\#_x : \mathcal{O}_{Y,f(x)} \to \mathcal{O}_{X,x}$ is surjective
+
+### Characterization of Open Immersions
+
+Let $V$ be an open subset of $Y$. Then $(V, \mathcal{O}_Y|_V)$ is a ringed topological space, where the structure sheaf $\mathcal{O}_Y|_V$ is defined by $(\mathcal{O}_Y|_V)(U) = \mathcal{O}_Y(U)$ for every open $U \subseteq V$. In all that follows, an open subset $V$ will always be endowed with this structure induced by $\mathcal{O}_Y$.
+
+**Key fact:** $(f, f^\#)$ is an open immersion if and only if there exists an open subset $V \subseteq Y$ such that $(f, f^\#)$ induces an isomorphism of ringed spaces:
+$$
+(X, \mathcal{O}_X) \simeq (V, \mathcal{O}_Y|_V)
+$$
+
+This characterization follows from Proposition 2.12: a morphism is an isomorphism precisely when it induces isomorphisms on all stalks.
+
+### In Plain English
+
+**What is an open immersion?**
+
+Think of an open immersion as identifying one scheme (or ringed space) as an "open piece" of another. Just as an open interval $(0,1)$ sits naturally inside the real line $\mathbb{R}$, an open immersion describes when one scheme $X$ can be viewed as an open subscheme of another scheme $Y$.
+
+**The two conditions:**
+
+1. **Topological condition:** The map $f : X \to Y$ must be a homeomorphism onto its image, and that image must be open in $Y$. This means $X$ looks exactly like some open region $V$ of $Y$ from a purely topological perspective—same "shape," same open sets.
+
+2. **Algebraic condition:** At the level of functions (the stalk maps), the structure must be preserved perfectly. Every function near $f(x)$ in $Y$ should correspond uniquely to a function near $x$ in $X$, and vice versa.
+
+**Why we need both conditions:**
+
+The topological condition ensures $X$ "sits inside" $Y$ as an open region in the right way. The algebraic condition ensures the functions match up correctly—we're not just embedding the space, but also its structure sheaf of regular functions.
+
+**Example:**
+
+Consider $X = \text{Spec}(k[x])$ (the affine line) and $Y = \text{Spec}(k[x, y])$ (the affine plane). The map $X \to Y$ induced by $k[x, y] \to k[x]$ sending $x \mapsto x$, $y \mapsto 0$ is a closed immersion—$X$ becomes a line inside the plane.
+
+For an open immersion, consider the inclusion $D(x) \hookrightarrow \text{Spec}(k[x])$. This identifies the "punctured line" (the line with the origin removed) as an open subscheme of the full line.
+
+**Connection to Proposition 3.12:**
+
+In Lemma 3.7, we use the fact that the localization morphism $A \to A_g$ induces an open immersion
+$$
+\text{Spec}(A_g) \hookrightarrow \text{Spec}(A)
+$$
+This is exactly what allows us to identify $D(f)$ (where $f$ doesn't vanish) with an affine scheme $\text{Spec}(A_f)$.
+
+# Lemma 1.7
+
+Let $\phi : A \to B$ be a ring homomorphism. Then we have a map of sets
+$\text{Spec}(\phi) : \text{Spec}(B) \to \text{Spec}(A)$ defined by $\mathfrak{p} \mapsto \phi^{-1}(\mathfrak{p})$ for every $\mathfrak{p} \in \text{Spec}(B)$.
+Let $f = \text{Spec}(\phi)$ be the
+map associated to $\phi$ as above. The following properties are true:
+
+(a) The map $f$ is continuous.
+(b) If $\phi$ is surjective, then $f$ induces a homeomorphism from $\text{Spec}(B)$ onto the
+closed subset $V(\text{Ker}(\phi))$ of $\text{Spec}(A)$.
+(c) If $\phi$ is a localization morphism $A \to S^{-1}A$, then $f$ is a homeomorphism
+from $\text{Spec}(S^{-1}A)$ onto the subspace $\{\mathfrak{p} \in \text{Spec}(A) \mid \mathfrak{p} \cap S = \emptyset\}$ of $\text{Spec}(A)$.
+
+**Proof:**
+
+(a) Let $I$ be an ideal of $A$. We let $IB$ denote the ideal of $B$ generated
+by $\phi(I)$. It is easy to see that $f^{-1}(V(I)) = V(IB)$. Hence $f$ is continuous.
+
+(b) If $\phi$ is surjective, $f$ clearly establishes a continuous bijection from $\text{Spec}(B)$
+onto $V(\text{Ker}(\phi))$. Moreover, it sends a closed set $V(J)$ onto a closed set $V(\phi^{-1}(J))$.
+It follows that $f$ is closed, and therefore a homeomorphism.
+
+(c) The assertion concerning the image of $f$, as well as the injectivity of $f$,
+follows directly from the definition (see 1.2.2). Let $B = S^{-1}A$, and let $J$ be an
+ideal of $B$. Then we easily see that $f(V(J)) = V(\phi^{-1}(J)) \cap f(\text{Spec}(B))$, which
+shows that $f$ is a closed map.
+
 # Lemma 3.7
 
 *Let $X = \text{Spec}(A)$ be an affine scheme, and let $g \in A$. Then the open subset $D(g)$, endowed with the structure of a ringed topological space induced by that of $X$, is an affine scheme isomorphic to $\text{Spec}(A_g)$ (as a ringed topological space).*
 
-Let $Y$ denote the affine scheme $\text{Spec}(A_g)$. By Lemma 1.7(c), we canonically have a topological open immersion $i : Y \to X$ whose image is $D(g)$. Let $D(h)$ be a principal open subset of $X$ contained in $D(g)$. Let $\bar{h}$ be the image of $h$ in $A_g$. We canonically have $\mathcal{O}_X(D(h)) = A_h \simeq (A_g)_{\bar{h}} = \mathcal{O}_Y(D(\bar{h})) = i_*\mathcal{O}_Y(D(h))$. As the $D(h)$ form a base of open subsets on $D(g)$, this shows that $i$ induces an isomorphism from $(Y, \mathcal{O}_Y)$ onto $(D(g), \mathcal{O}_X|_{D(g)})$ (Exercise 2.7).
+### Understanding the Statement
+
+**What is $D(g)$?**
+
+For a ring element $g \in A$, the distinguished open set $D(g) \subseteq \text{Spec}(A)$ is defined as:
+$$
+D(g) = \{\mathfrak{p} \in \text{Spec}(A) \mid g \notin \mathfrak{p}\}
+$$
+
+Geometrically, this is the set of prime ideals that **don't** contain $g$ — in other words, the "locus where $g$ doesn't vanish."
+
+**What is $\mathcal{O}_X|_{D(g)}$?**
+
+The notation $\mathcal{O}_X|_{D(g)}$ denotes the **restriction of the structure sheaf** $\mathcal{O}_X$ to the open subset $D(g)$. Formally, this is a sheaf on $D(g)$ defined by:
+$$
+(\mathcal{O}_X|_{D(g)})(U) = \mathcal{O}_X(U) \quad \text{for every open } U \subseteq D(g)
+$$
+
+The pair $(D(g), \mathcal{O}_X|_{D(g)})$ is a ringed topological space — it's the scheme $X$ "viewed only on the open set where $g$ doesn't vanish."
+
+### Proof
+
+Let $Y$ denote the affine scheme $\text{Spec}(A_g)$. By Lemma 1.7(c), the localization homomorphism $A \to A_g$ induces a topological open immersion
+$$
+i : Y = \text{Spec}(A_g) \hookrightarrow \text{Spec}(A) = X
+$$
+whose image is exactly $D(g)$.
+
+**Why is $\text{Spec}(A_g)$ homeomorphic to $D(g)$?**
+
+By Lemma 1.7(c), the map $\text{Spec}(A_g) \to \text{Spec}(A)$ is a homeomorphism onto the subspace
+$$
+\{\mathfrak{p} \in \text{Spec}(A) \mid \mathfrak{p} \cap S = \emptyset\}
+$$
+where $S = \{1, g, g^2, g^3, \ldots\}$. But $\mathfrak{p} \cap S = \emptyset$ means precisely that $g^n \notin \mathfrak{p}$ for all $n \geq 0$, which is equivalent to $g \notin \mathfrak{p}$. Hence this subspace is $D(g)$.
+
+**Checking the sheaf condition:**
+
+To show that $i$ is an isomorphism of ringed spaces $(Y, \mathcal{O}_Y) \simeq (D(g), \mathcal{O}_X|_{D(g)})$, we need to verify that the structure sheaves match up. By Proposition 2.12 and Exercise 2.7, it suffices to check this on a basis of open sets.
+
+Let $D(h)$ be a principal open subset of $X = \text{Spec}(A)$ contained in $D(g)$. Let $\bar{h}$ be the image of $h$ in $A_g$. Then:
+
+$$
+\begin{aligned}
+\mathcal{O}_X(D(h)) &= A_h \\
+&\simeq (A_g)_{\bar{h}} \quad \text{(localization commutes with localization)} \\
+&= \mathcal{O}_Y(D(\bar{h})) \\
+&= (i_*\mathcal{O}_Y)(D(h))
+\end{aligned}
+$$
+
+**Why does $A_h \simeq (A_g)_{\bar{h}}$?**
+
+Localizing at $g$ and then at $\bar{h}$ is the same as localizing at $gh$:
+$$
+(A_g)_{\bar{h}} = A_g[\bar{h}^{-1}] = A[(g^{-1})(h^{-1})] = A[(gh)^{-1}] = A_{gh}
+$$
+
+Since $D(h) \subseteq D(g)$, any prime ideal not containing $h$ also doesn't contain $g$, so $D(h) = D(gh)$ and therefore $A_h = A_{gh}$.
+
+**Conclusion:**
+
+Since the principal open sets $D(h)$ form a basis for the topology on $D(g)$, and we've shown $\mathcal{O}_X|_{D(g)}$ agrees with $i_*\mathcal{O}_Y$ on this basis, Exercise 2.7 tells us the two sheaves are isomorphic. Therefore $i$ induces an isomorphism of ringed spaces:
+$$
+(Y, \mathcal{O}_Y) = \text{Spec}(A_g) \simeq (D(g), \mathcal{O}_X|_{D(g)})
+$$
+
+### In Plain English
+
+**Geometric meaning:**
+
+Lemma 3.7 tells us that "localizing the ring" and "restricting to where $g$ doesn't vanish" are two sides of the same coin:
+
+* **Algebra side:** $A \to A_g$ inverts the element $g$
+* **Geometry side:** $\text{Spec}(A) \to \text{Spec}(A_g)$ restricts to the open set $D(g)$
+
+The lemma guarantees these operations are compatible: the scheme you get by localizing the ring is exactly the same as the open subscheme where $g$ is invertible.
+
+**Example:**
+
+Take $A = k[x]$ (the coordinate ring of the affine line) and $g = x$. Then:
+* $D(x)$ is the affine line with the origin removed
+* $A_x = k[x]_x = k[x, x^{-1}]$ is the ring of Laurent polynomials
+
+The lemma says:
+$$
+\text{Spec}(k[x, x^{-1}]) \simeq D(x) \subset \text{Spec}(k[x])
+$$
+
+This makes geometric sense: the ring $k[x, x^{-1}]$ consists of functions that may have negative powers of $x$ (they're allowed to "blow up" at $x = 0$), which is exactly what you need for functions on the line with the origin removed.
 
 # Definition 3.11
 
@@ -142,6 +334,13 @@ $\alpha : \mathcal{O}_X(X)_f \to \mathcal{O}_X(X_f)$.
 
 **Why $\alpha$ exists:** The restriction map $\rho : \mathcal{O}_X(X) \to \mathcal{O}_X(X_f)$ sends $f \mapsto f|_{X_f}$. Since we constructed an inverse of $f|_{X_f}$ in $\mathcal{O}_X(X_f)$ by glueing the local inverses $g$, the element $f|_{X_f}$ is a unit in $\mathcal{O}_X(X_f)$. By the universal property of localization, any ring homomorphism $\varphi : A \to B$ with $\varphi(f)$ a unit factors uniquely through $A_f$. Applying this to $\rho : \mathcal{O}_X(X) \to \mathcal{O}_X(X_f)$, we obtain the unique homomorphism $\alpha : \mathcal{O}_X(X)_f \to \mathcal{O}_X(X_f)$ satisfying $\alpha(a/1) = \rho(a)$ for all $a \in \mathcal{O}_X(X)$. Explicitly, $\alpha(a/f^n) = \rho(a) \cdot (\rho(f))^{-n}$.
 
+$$
+\begin{tikzcd}
+\mathcal{O}_X(X) \arrow[r] \arrow[dr, "ρ"] & \mathcal{O}_X(X)_f \arrow[d, dashed, "\exists!\,\alpha"] \\
+& \mathcal{O}_X(X_f)
+\end{tikzcd}
+$$
+
 ## $α$ is Iso
 
 By hypothesis (3.2), $X$ admits a finite covering $\mathcal{U} = \{U_i\}_i$ by affine open
@@ -154,8 +353,27 @@ Note: in a topological space if $X$ is the union of a finite covering of $U_i$ o
 
 $$⟹  V_i := U_i \cap X_f = D(f|_{U_i}) $$
 
-For simplicity, let us also denote by $f$ its restriction to any open subset of $X$. We have
-$\mathcal{O}_X(U_i)_f = \mathcal{O}_X(V_i)$ by virtue of Lemma 3.7. With the notation of Lemma 2.7,
+(since $V_i$ is affine)
+
+For simplicity, let us also denote by $f$ its restriction to any open subset of $X$.
+
+We have $\mathcal{O}_X(U_i)_f = \mathcal{O}_X(V_i)$ by virtue of Lemma 3.7.
+
+**Detailed explanation:**
+
+Recall $V_i = U_i \cap X_f = D(f|_{U_i})$. Since $U_i = \text{Spec}(A_i)$ is affine with $A_i = \mathcal{O}_X(U_i)$, Lemma 3.7 tells us:
+
+$$
+D(f|_{U_i}) \cong \text{Spec}(\mathcal{O}_X(U_i)_f)
+$$
+
+as ringed topological spaces. By the very definition of the structure sheaf on an affine scheme, the ring of regular functions on $\text{Spec}(\mathcal{O}_X(U_i)_f)$ is precisely $\mathcal{O}_X(U_i)_f$. Therefore:
+
+$$
+\mathcal{O}_X(V_i) = \mathcal{O}_X(D(f|_{U_i})) = \mathcal{O}_X(U_i)_f
+$$
+
+With the notation of Lemma 2.7,
 we have an exact complex $C_\bullet(\mathcal{U}, \mathcal{O}_X)$ where we can replace $\prod$ by $\oplus$ since there
 are only a finite number of terms:
 
@@ -166,9 +384,14 @@ $$
 where $d_0$ sends $s \mapsto (s|_{U_i})_i$ and $d_1$ sends $(s_i)_i \mapsto (s_i|_{U_i \cap U_j} - s_j|_{U_i \cap U_j})_{i,j}$.
 
 Therefore $C_\bullet(\mathcal{U}, \mathcal{O}_X) \otimes_{\mathcal{O}_X(X)} \mathcal{O}_X(X)_f$ is still
-exact owing to the flatness of $\mathcal{O}_X(X) \to \mathcal{O}_X(X)_f$ (Corollary 1.2.11):
+exact owing to the flatness of $\mathcal{O}_X(X) \to \mathcal{O}_X(X)_f$ (Corollary 1.2.11).
 
-Explicitly, using the standard isomorphism $A \otimes_A M \cong M$ for any ring $A$ and $A$-module $M$, we have:
+Here the functor is $\square ⊗_{\mathcal{O}_X(X)} \mathcal{O}_X(X)_f$. For any
+$\mathcal{O}_X(X)$-module
+$M$ since we have the localisation homomorphism
+$\mathcal{O}_X(X) \to \mathcal{O}_X(X)_f$, so
+$M ⊗_{\mathcal{O}_X(X)} \mathcal{O}_X(X)_f \cong M_f$ by $M ⊗_A S⁻¹A \cong S⁻¹A$.
+
 $$
 \begin{aligned}
 \mathcal{O}_X(X) \otimes_{\mathcal{O}_X(X)} \mathcal{O}_X(X)_f &\cong \mathcal{O}_X(X)_f, \\
@@ -180,25 +403,49 @@ $$
 
 **Explanation of the second line:** The tensor product distributes over direct sums, giving $\bigoplus_i \left(\mathcal{O}_X(U_i) \otimes_{\mathcal{O}_X(X)} \mathcal{O}_X(X)_f\right)$. Each $\mathcal{O}_X(U_i)$ is an $\mathcal{O}_X(X)$-algebra via the restriction map, and localization commutes with tensor products: $\mathcal{O}_X(U_i) \otimes_{\mathcal{O}_X(X)} \mathcal{O}_X(X)_f \cong \mathcal{O}_X(U_i)_f$ (where the right side means localization at the image of $f$ in $\mathcal{O}_X(U_i)$).
 
-This gives
-a commutative diagram:
+This gives a commutative diagram:
 
 $$
-\begin{array}{ccccccccc}
-0 & \to & \mathcal{O}_X(X)_f & \to & \bigoplus_i \mathcal{O}_X(U_i)_f & \to & \bigoplus_{i,j} \mathcal{O}_X(U_i \cap U_j)_f & \to & 0 \\
-  &     & \downarrow \alpha &     & \downarrow &     & \downarrow \beta &     &   \\
-0 & \to & \mathcal{O}_X(X_f) & \to & \bigoplus_i \mathcal{O}_X(V_i) & \to & \bigoplus_{i,j} \mathcal{O}_X(V_i \cap V_j) & \to & 0
-\end{array}
+\begin{tikzcd}
+0 \arrow[r] & \mathcal{O}_X(X)_f \arrow[d, "\alpha"'] \arrow[r, "d_0"'] & \bigoplus_i \mathcal{O}_X(U_i)_f \arrow[d, "\simeq"'] \arrow[r, "d_1"'] & \bigoplus_{i,j} \mathcal{O}_X(U_i \cap U_j)_f \arrow[d, "\beta"'] \arrow[r] & 0 \\
+0 \arrow[r] & \mathcal{O}_X(X_f) \arrow[r, "d_0"'] & \bigoplus_i \mathcal{O}_X(V_i) \arrow[r, "d_1"'] & \bigoplus_{i,j} \mathcal{O}_X(V_i \cap V_j) \arrow[r] & 0
+\end{tikzcd}
 $$
 
-where the horizontal lines are exact.
+where the horizontal rows are exact.
 
-**Why $\alpha$ is injective:** Let $a \in \mathcal{O}_X(X)_f$ with $\alpha(a) = 0$. By exactness of the top row, $a$ maps to some element $b \in \bigoplus_i \mathcal{O}_X(U_i)_f$. By commutativity of the left square, $b$ maps to $0$ in $\bigoplus_i \mathcal{O}_X(V_i)$. By exactness of the bottom row, $b$ must be in the kernel of $\bigoplus_i \mathcal{O}_X(U_i)_f \to \bigoplus_i \mathcal{O}_X(V_i)$, which (by the middle square commuting) equals the image of $\bigoplus_{i,j} \mathcal{O}_X(U_i \cap U_j)_f$. By exactness of the top row, $a$ must be $0$. Hence $\alpha$ is injective.
+**Why $\alpha$ is injective:** Let $a \in \mathcal{O}_X(X)_f$ with $\alpha(a) = 0$. By exactness of the top row, $a$ maps to some element $b \in \bigoplus_i \mathcal{O}_X(U_i)_f$. By commutativity of the left square, $b$ maps to $0$ in $\bigoplus_i \mathcal{O}_X(V_i)$.
 
-Let us note that
-we have only used the hypothesis that $X$ admits a covering by a finite number
-of affine open subsets. We can therefore apply the same reasoning to $U_i \cap U_j$,
-which implies that $\beta$ is injective.
+We showed above $\bigoplus_i \mathcal{O}_X(U_i)_f = \bigoplus_i \mathcal{O}_X(V_i)$ (see "detailed explanation"). Since $b$ maps to $0$ under this isomorphism, we must have $b = 0$.
+
+By exactness of the top row, the first map $\mathcal{O}_X(X)_f \to \bigoplus_i \mathcal{O}_X(U_i)_f$ is injective, so $a = 0$. Hence $\alpha$ is injective.
+
+**Why $\beta$ is injective:**
+
+By hypothesis (3.2), each intersection $U_i \cap U_j$ admits a finite covering by affine open subsets. Let $\{W_{ijk}\}_k$ be such a finite affine open covering of $U_i \cap U_j$. Then we can apply the same Čech complex construction to each $U_i \cap U_j$:
+
+$$
+0 \to \mathcal{O}_X(U_i \cap U_j) \to \bigoplus_k \mathcal{O}_X(W_{ijk}) \to \bigoplus_{k,\ell} \mathcal{O}_X(W_{ijk} \cap W_{ij\ell}) \to 0
+$$
+
+Localizing at $f$ (using flatness), we get:
+
+$$
+0 \to \mathcal{O}_X(U_i \cap U_j)_f \to \bigoplus_k \mathcal{O}_X(W_{ijk})_f \to \bigoplus_{k,\ell} \mathcal{O}_X(W_{ijk} \cap W_{ij\ell})_f \to 0
+$$
+
+But $W_{ijk} \subseteq U_i \cap U_j \subseteq X_f$, so $W_{ijk} \cap X_f = W_{ijk}$, and by Lemma 3.7, $\mathcal{O}_X(W_{ijk})_f \cong \mathcal{O}_X(W_{ijk})$. Similarly, $(W_{ijk} \cap W_{ij\ell})_f = W_{ijk} \cap W_{ij\ell}$ and $\mathcal{O}_X(W_{ijk} \cap W_{ij\ell})_f \cong \mathcal{O}_X(W_{ijk} \cap W_{ij\ell})$.
+
+This gives us a commutative diagram for each pair $(i,j)$:
+
+$$
+\begin{tikzcd}
+0 \arrow[r] & \mathcal{O}_X(U_i \cap U_j)_f \arrow[d] \arrow[r] & \bigoplus_k \mathcal{O}_X(W_{ijk})_f \arrow[d, "\simeq"'] \arrow[r] & \bigoplus_{k,\ell} \mathcal{O}_X(W_{ijk} \cap W_{ij\ell})_f \arrow[d, "\simeq"'] \arrow[r] & 0 \\
+0 \arrow[r] & \mathcal{O}_X(V_i \cap V_j) \arrow[r] & \bigoplus_k \mathcal{O}_X(W_{ijk}) \arrow[r] & \bigoplus_{k,\ell} \mathcal{O}_X(W_{ijk} \cap W_{ij\ell}) \arrow[r] & 0
+\end{tikzcd}
+$$
+
+By the exact same reasoning as for $\alpha$, the leftmost vertical map (which is precisely the component of $\beta$ corresponding to $(i,j)$) is injective. Since this holds for all pairs $(i,j)$, the direct sum map $\beta$ is injective.
 
 **Why $\alpha$ is an isomorphism given that $\alpha$ and $\beta$ are injective:**
 
