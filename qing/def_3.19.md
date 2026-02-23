@@ -190,6 +190,10 @@ $$
 \mathcal{O}_{Y,y} & \text{if } x = f(y).
 \end{cases}
 $$
+
+Need $f(Y)$ closed for to guarantee that for every $x ∉ f(Y)$ there exist open
+$U$ with $U ∩ f(Y) = ∅$ which ensures that $(f_*\mathcal{O}_Y)_x = 0$.
+
 Using the exact sequence $0 \to \mathcal{J} \to \mathcal{O}_X \to f_*\mathcal{O}_Y \to 0$ and Proposition 2.18, we obtain exactness on stalks:
 $$
 0 \to \mathcal{J}_x \to \mathcal{O}_{X,x} \to (f_*\mathcal{O}_Y)_x \to 0.
